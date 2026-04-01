@@ -4,7 +4,6 @@
 # VIOLATION OF THESE RULES WILL BREAK THE APPLICATION.
 # ============================================================
 
-
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## What This Package Is

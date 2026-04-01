@@ -1,0 +1,4 @@
+import React from 'react'
+export default function UiTextarea({name,label,value='',placeholder,rows=4,maxlength,showCount,required,error,onChange}){
+  return(<div>{label&&<label htmlFor={name} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{label}{required&&<span className="text-red-500"> *</span>}</label>}<textarea id={name} value={value} onChange={onChange} rows={rows} placeholder={placeholder} maxLength={maxlength} required={required} className="block w-full rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-800 p-2.5 text-sm"/>{showCount&&maxlength&&<p className="mt-1 text-xs text-gray-400">{(value||'').length}/{maxlength}</p>}{error&&<p className="mt-1 text-sm text-red-600">{error}</p>}</div>)
+}

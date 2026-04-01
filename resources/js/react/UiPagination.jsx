@@ -1,0 +1,5 @@
+import React from 'react'
+export default function UiPagination({currentPage,lastPage,total,perPage=15,onPageChange}){
+  if(lastPage<=1)return null
+  return(<nav className="flex items-center justify-between"><p className="text-sm text-gray-700">Showing {(currentPage-1)*perPage+1} to {Math.min(currentPage*perPage,total)} of {total}</p><div className="flex gap-1"><button onClick={()=>onPageChange(currentPage-1)} disabled={currentPage<=1} className={`px-3 py-1 text-sm rounded border ${currentPage<=1?'opacity-50':'hover:bg-gray-50'}`}>Prev</button>{Array.from({length:Math.min(5,lastPage)},(_,i)=>i+1).map(i=><button key={i} onClick={()=>onPageChange(i)} className={`px-3 py-1 text-sm rounded border ${i===currentPage?'bg-blue-600 text-white border-blue-600':'hover:bg-gray-50'}`}>{i}</button>)}<button onClick={()=>onPageChange(currentPage+1)} disabled={currentPage>=lastPage} className={`px-3 py-1 text-sm rounded border ${currentPage>=lastPage?'opacity-50':'hover:bg-gray-50'}`}>Next</button></div></nav>)
+}

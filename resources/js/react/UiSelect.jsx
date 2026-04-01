@@ -1,0 +1,4 @@
+import React from 'react'
+export default function UiSelect({name,label,options={},value,placeholder,required,disabled,error,onChange}){
+  return(<div>{label&&<label htmlFor={name} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{label}{required&&<span className="text-red-500"> *</span>}</label>}<select id={name} value={value} onChange={onChange} required={required} disabled={disabled} className="block w-full rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-800 p-2.5 text-sm">{placeholder&&<option value="">{placeholder}</option>}{Object.entries(options).map(([k,v])=><option key={k} value={k}>{v}</option>)}</select>{error&&<p className="mt-1 text-sm text-red-600">{error}</p>}</div>)
+}

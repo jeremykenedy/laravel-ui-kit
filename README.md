@@ -73,7 +73,7 @@ Every component renders identically across all CSS and frontend combinations:
 
 ```bash
 composer require jeremykenedy/laravel-ui-kit
-php artisan ui-kit:install --css=tailwind --frontend=blade
+php artisan ui-kit:install
 ```
 
 ## Configuration

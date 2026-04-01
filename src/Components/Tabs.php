@@ -15,7 +15,8 @@ class Tabs extends Component
         public string $variant = 'underline',
         public string $id = 'tabs',
         public bool $vertical = false,
-    ) {}
+    ) {
+    }
 
     public function render(): View
     {

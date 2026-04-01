@@ -24,7 +24,7 @@ class UiPasswordInput extends Component
 
     public function toggleVisibility(): void
     {
-        $this->showPassword = ! $this->showPassword;
+        $this->showPassword = !$this->showPassword;
     }
 
     public function render()

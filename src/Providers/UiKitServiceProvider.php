@@ -105,35 +105,35 @@ class UiKitServiceProvider extends ServiceProvider
 
     protected function registerLivewireComponents(): void
     {
-        if (! class_exists(Livewire::class)) {
+        if (!class_exists(Livewire::class)) {
             return;
         }
 
         $livewireComponents = [
-            'ui-alert' => UiAlert::class,
-            'ui-avatar' => UiAvatar::class,
-            'ui-badge' => UiBadge::class,
-            'ui-button' => UiButton::class,
-            'ui-card' => UiCard::class,
-            'ui-checkbox' => UiCheckbox::class,
-            'ui-confirm' => UiConfirm::class,
-            'ui-data-table' => UiDataTable::class,
-            'ui-dropdown' => UiDropdown::class,
-            'ui-form-group' => UiFormGroup::class,
-            'ui-icon' => UiIcon::class,
-            'ui-input' => UiInput::class,
-            'ui-modal' => UiModal::class,
-            'ui-nav' => UiNav::class,
-            'ui-pagination' => UiPagination::class,
+            'ui-alert'          => UiAlert::class,
+            'ui-avatar'         => UiAvatar::class,
+            'ui-badge'          => UiBadge::class,
+            'ui-button'         => UiButton::class,
+            'ui-card'           => UiCard::class,
+            'ui-checkbox'       => UiCheckbox::class,
+            'ui-confirm'        => UiConfirm::class,
+            'ui-data-table'     => UiDataTable::class,
+            'ui-dropdown'       => UiDropdown::class,
+            'ui-form-group'     => UiFormGroup::class,
+            'ui-icon'           => UiIcon::class,
+            'ui-input'          => UiInput::class,
+            'ui-modal'          => UiModal::class,
+            'ui-nav'            => UiNav::class,
+            'ui-pagination'     => UiPagination::class,
             'ui-password-input' => UiPasswordInput::class,
-            'ui-search-input' => UiSearchInput::class,
-            'ui-select' => UiSelect::class,
-            'ui-status-panel' => UiStatusPanel::class,
-            'ui-tabs' => UiTabs::class,
-            'ui-textarea' => UiTextarea::class,
-            'ui-toggle' => UiToggle::class,
-            'ui-theme-toggle' => UiThemeToggle::class,
-            'ui-stat-card' => UiStatCard::class,
+            'ui-search-input'   => UiSearchInput::class,
+            'ui-select'         => UiSelect::class,
+            'ui-status-panel'   => UiStatusPanel::class,
+            'ui-tabs'           => UiTabs::class,
+            'ui-textarea'       => UiTextarea::class,
+            'ui-toggle'         => UiToggle::class,
+            'ui-theme-toggle'   => UiThemeToggle::class,
+            'ui-stat-card'      => UiStatCard::class,
         ];
 
         foreach ($livewireComponents as $name => $class) {

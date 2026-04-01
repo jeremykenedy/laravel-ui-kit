@@ -18,8 +18,8 @@ class UiToggle extends Component
 
     public function toggle(): void
     {
-        if (! $this->disabled) {
-            $this->checked = ! $this->checked;
+        if (!$this->disabled) {
+            $this->checked = !$this->checked;
             $this->dispatch('toggled', checked: $this->checked, name: $this->name);
         }
     }

@@ -15,7 +15,8 @@ class StatusPanel extends Component
         public ?string $message = null,
         public ?string $icon = null,
         public bool $centered = true,
-    ) {}
+    ) {
+    }
 
     public function render(): View
     {
@@ -28,8 +29,8 @@ class StatusPanel extends Component
             'success' => 'text-green-600 dark:text-green-400',
             'danger', 'error' => 'text-red-600 dark:text-red-400',
             'warning' => 'text-amber-600 dark:text-amber-400',
-            'info' => 'text-blue-600 dark:text-blue-400',
-            default => 'text-gray-600 dark:text-gray-400',
+            'info'    => 'text-blue-600 dark:text-blue-400',
+            default   => 'text-gray-600 dark:text-gray-400',
         };
     }
 }

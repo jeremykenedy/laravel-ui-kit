@@ -15,7 +15,8 @@ class Dropdown extends Component
         public string $width = '48',
         public ?string $id = null,
         public bool $divided = false,
-    ) {}
+    ) {
+    }
 
     public function render(): View
     {
@@ -25,21 +26,21 @@ class Dropdown extends Component
     public function alignClasses(): string
     {
         return match ($this->align) {
-            'left' => 'origin-top-left left-0',
-            'right' => 'origin-top-right right-0',
+            'left'   => 'origin-top-left left-0',
+            'right'  => 'origin-top-right right-0',
             'center' => 'origin-top left-1/2 -translate-x-1/2',
-            default => 'origin-top-right right-0',
+            default  => 'origin-top-right right-0',
         };
     }
 
     public function widthClasses(): string
     {
         return match ($this->width) {
-            '48' => 'w-48',
-            '56' => 'w-56',
-            '64' => 'w-64',
-            '72' => 'w-72',
-            'full' => 'w-full',
+            '48'    => 'w-48',
+            '56'    => 'w-56',
+            '64'    => 'w-64',
+            '72'    => 'w-72',
+            'full'  => 'w-full',
             default => 'w-48',
         };
     }

@@ -1,10 +1,6 @@
 name: Tests
 
-on:
-  push:
-    branches: [main, master, develop]
-  pull_request:
-    branches: [main, master, develop]
+on: ['push', 'pull_request']
 
 jobs:
   tests:
@@ -19,55 +15,60 @@ jobs:
           - laravel: '12.*'
             testbench: '10.*'
           - laravel: '13.*'
-            testbench: '10.*'
+            testbench: '11.*'
 
     name: PHP ${{ matrix.php }} / Laravel ${{ matrix.laravel }}
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           extensions: mbstring, pdo, pdo_sqlite
+          tools: composer:v2
           coverage: none
 
       - name: Install dependencies
         run: |
           composer config allow-plugins.pestphp/pest-plugin true
-          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
+          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update --dev
           composer update --prefer-dist --no-interaction
 
-      - name: Run Pest tests
-        run: vendor/bin/pest
+      - name: Tests
+        run: ./vendor/bin/pest --ci
 
   lint:
     runs-on: ubuntu-latest
     name: Pint
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.4'
+          tools: composer:v2
 
       - name: Install dependencies
         run: |
           composer config allow-plugins.pestphp/pest-plugin true
           composer install --prefer-dist --no-interaction
 
-      - name: Run Pint
-        run: vendor/bin/pint --test
+      - name: Pint
+        run: ./vendor/bin/pint --test
 
   js-check:
     runs-on: ubuntu-latest
     name: Frontend components
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Verify Vue components exist
         run: |

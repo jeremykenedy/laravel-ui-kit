@@ -13,6 +13,7 @@
 <p align="center">
     <a href="https://packagist.org/packages/jeremykenedy/laravel-ui-kit"><img src="https://poser.pugx.org/jeremykenedy/laravel-ui-kit/d/total.svg" alt="Total Downloads"></a>
     <a href="https://packagist.org/packages/jeremykenedy/laravel-ui-kit"><img src="https://poser.pugx.org/jeremykenedy/laravel-ui-kit/v/stable.svg" alt="Latest Stable Version"></a>
+    <a href="https://github.com/jeremykenedy/laravel-ui-kit/actions"><img src="https://github.com/jeremykenedy/laravel-ui-kit/actions/workflows/tests.yml/badge.svg" alt="Tests"></a>
     <a href="https://github.styleci.io/repos/1198564615?branch=main"><img src="https://github.styleci.io/repos/1198564615/shield?branch=main" alt="StyleCI"></a>
     <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
 </p>

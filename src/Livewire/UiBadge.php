@@ -13,5 +13,8 @@ class UiBadge extends Component
     public bool $rounded = false;
     public bool $dot = false;
 
-    public function render() { return view('ui-kit::livewire.badge'); }
+    public function render()
+    {
+        return view('ui-kit::livewire.badge');
+    }
 }

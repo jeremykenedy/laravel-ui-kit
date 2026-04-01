@@ -48,8 +48,8 @@ class PasswordInput extends Component
     public function strengthMessages(): array
     {
         return config('ui-kit.password.messages', [
-            'short' => 'Too short',
-            'weak' => 'Weak',
+            'short'  => 'Too short',
+            'weak'   => 'Weak',
             'medium' => 'Medium',
             'strong' => 'Strong',
         ]);

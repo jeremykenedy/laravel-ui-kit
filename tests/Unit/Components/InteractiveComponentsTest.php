@@ -1,19 +1,9 @@
 <?php
 
-use Jeremykenedy\LaravelUiKit\Components\Modal;
 use Jeremykenedy\LaravelUiKit\Components\Confirm;
-use Jeremykenedy\LaravelUiKit\Components\Toggle;
 use Jeremykenedy\LaravelUiKit\Components\Dropdown;
-use Jeremykenedy\LaravelUiKit\Components\PasswordInput;
-use Jeremykenedy\LaravelUiKit\Components\Select;
-use Jeremykenedy\LaravelUiKit\Components\Textarea;
-use Jeremykenedy\LaravelUiKit\Components\Checkbox;
-use Jeremykenedy\LaravelUiKit\Components\FormGroup;
-use Jeremykenedy\LaravelUiKit\Components\SearchInput;
-use Jeremykenedy\LaravelUiKit\Components\StatusPanel;
-use Jeremykenedy\LaravelUiKit\Components\Tabs;
-use Jeremykenedy\LaravelUiKit\Components\DataTable;
-use Jeremykenedy\LaravelUiKit\Components\Icon;
+use Jeremykenedy\LaravelUiKit\Components\Modal;
+use Jeremykenedy\LaravelUiKit\Components\Toggle;
 
 // Modal Component
 it('returns correct modal size classes', function () {

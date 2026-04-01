@@ -19,5 +19,8 @@ class UiPagination extends Component
         $this->dispatch('page-changed', page: $this->currentPage);
     }
 
-    public function render() { return view('ui-kit::livewire.pagination'); }
+    public function render()
+    {
+        return view('ui-kit::livewire.pagination');
+    }
 }

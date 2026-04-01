@@ -51,9 +51,9 @@ class Input extends Component
         $base = 'block w-full rounded-lg border px-4 py-2.5 transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-0 sm:text-sm dark:bg-gray-800';
 
         if ($this->hasError()) {
-            return $base . ' border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500 dark:border-red-600 dark:text-red-300';
+            return $base.' border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500 dark:border-red-600 dark:text-red-300';
         }
 
-        return $base . ' border-gray-300 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:text-gray-100';
+        return $base.' border-gray-300 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:text-gray-100';
     }
 }

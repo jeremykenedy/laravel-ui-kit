@@ -12,5 +12,8 @@ class UiStatusPanel extends Component
     public string $variant = 'info';
     public ?string $icon = null;
 
-    public function render() { return view('ui-kit::livewire.status-panel'); }
+    public function render()
+    {
+        return view('ui-kit::livewire.status-panel');
+    }
 }

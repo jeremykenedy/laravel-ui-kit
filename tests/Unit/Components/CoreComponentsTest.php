@@ -1,11 +1,11 @@
 <?php
 
-use Jeremykenedy\LaravelUiKit\Components\Button;
 use Jeremykenedy\LaravelUiKit\Components\Alert;
+use Jeremykenedy\LaravelUiKit\Components\Avatar;
 use Jeremykenedy\LaravelUiKit\Components\Badge;
+use Jeremykenedy\LaravelUiKit\Components\Button;
 use Jeremykenedy\LaravelUiKit\Components\Card;
 use Jeremykenedy\LaravelUiKit\Components\Input;
-use Jeremykenedy\LaravelUiKit\Components\Avatar;
 
 // Button Component
 it('renders a button with default props', function () {

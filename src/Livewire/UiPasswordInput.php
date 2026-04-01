@@ -16,7 +16,13 @@ class UiPasswordInput extends Component
     public ?string $error = null;
     public ?string $autocomplete = 'new-password';
 
-    public function toggleVisibility(): void { $this->showPassword = ! $this->showPassword; }
+    public function toggleVisibility(): void
+    {
+        $this->showPassword = !$this->showPassword;
+    }
 
-    public function render() { return view('ui-kit::livewire.password-input'); }
+    public function render()
+    {
+        return view('ui-kit::livewire.password-input');
+    }
 }

@@ -16,7 +16,8 @@ class Card extends Component
         public bool $hoverable = false,
         public bool $bordered = true,
         public ?string $padding = 'md',
-    ) {}
+    ) {
+    }
 
     public function render(): \Illuminate\Contracts\View\View
     {
@@ -26,10 +27,10 @@ class Card extends Component
     public function paddingClasses(): string
     {
         return match ($this->padding) {
-            'none' => '',
-            'sm' => 'p-3',
-            'md' => 'p-4 sm:p-6',
-            'lg' => 'p-6 sm:p-8',
+            'none'  => '',
+            'sm'    => 'p-3',
+            'md'    => 'p-4 sm:p-6',
+            'lg'    => 'p-6 sm:p-8',
             default => 'p-4 sm:p-6',
         };
     }

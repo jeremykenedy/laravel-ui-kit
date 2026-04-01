@@ -23,5 +23,8 @@ class UiTabs extends Component
         $this->dispatch('tab-changed', tab: $tab);
     }
 
-    public function render() { return view('ui-kit::livewire.tabs'); }
+    public function render()
+    {
+        return view('ui-kit::livewire.tabs');
+    }
 }

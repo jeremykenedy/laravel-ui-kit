@@ -13,7 +13,13 @@ class UiAlert extends Component
     public ?string $title = null;
     public bool $visible = true;
 
-    public function dismiss(): void { $this->visible = false; }
+    public function dismiss(): void
+    {
+        $this->visible = false;
+    }
 
-    public function render() { return view('ui-kit::livewire.alert'); }
+    public function render()
+    {
+        return view('ui-kit::livewire.alert');
+    }
 }

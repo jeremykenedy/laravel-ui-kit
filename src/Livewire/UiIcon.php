@@ -11,5 +11,8 @@ class UiIcon extends Component
     public string $name;
     public string $size = 'md';
 
-    public function render() { return view('ui-kit::livewire.icon'); }
+    public function render()
+    {
+        return view('ui-kit::livewire.icon');
+    }
 }

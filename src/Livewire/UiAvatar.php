@@ -13,5 +13,8 @@ class UiAvatar extends Component
     public string $size = 'md';
     public ?string $status = null;
 
-    public function render() { return view('ui-kit::livewire.avatar'); }
+    public function render()
+    {
+        return view('ui-kit::livewire.avatar');
+    }
 }

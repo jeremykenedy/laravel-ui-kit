@@ -15,11 +15,14 @@ class UiToggle extends Component
 
     public function toggle(): void
     {
-        if (! $this->disabled) {
-            $this->checked = ! $this->checked;
+        if (!$this->disabled) {
+            $this->checked = !$this->checked;
             $this->dispatch('toggled', checked: $this->checked, name: $this->name);
         }
     }
 
-    public function render() { return view('ui-kit::livewire.toggle'); }
+    public function render()
+    {
+        return view('ui-kit::livewire.toggle');
+    }
 }

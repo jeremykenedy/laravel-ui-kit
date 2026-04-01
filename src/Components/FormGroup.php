@@ -15,7 +15,8 @@ class FormGroup extends Component
         public ?string $error = null,
         public bool $required = false,
         public bool $inline = false,
-    ) {}
+    ) {
+    }
 
     public function render(): \Illuminate\Contracts\View\View
     {

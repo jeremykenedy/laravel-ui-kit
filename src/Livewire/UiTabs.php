@@ -9,6 +9,7 @@ use Livewire\Component;
 class UiTabs extends Component
 {
     public string $activeTab = '';
+
     public array $tabs = [];
 
     public function mount(array $tabs = [], ?string $active = null): void

@@ -9,6 +9,7 @@ use Livewire\Component;
 class UiIcon extends Component
 {
     public string $name;
+
     public string $size = 'md';
 
     public function render()

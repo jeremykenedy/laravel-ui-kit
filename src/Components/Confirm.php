@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jeremykenedy\LaravelUiKit\Components;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class Confirm extends Component
@@ -24,7 +25,7 @@ class Confirm extends Component
         $this->cancelText = $this->cancelText ?? ($defaults['cancel_text'] ?? 'Cancel');
     }
 
-    public function render(): \Illuminate\Contracts\View\View
+    public function render(): View
     {
         return view('ui::components.confirm');
     }

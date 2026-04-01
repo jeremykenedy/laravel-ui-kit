@@ -17,18 +17,18 @@ it('auto-generates password input id from name', function () {
 
 it('loads password strength messages from config', function () {
     config(['ui-kit.password.messages.strong' => 'Very Strong!']);
-    $component = new PasswordInput();
+    $component = new PasswordInput;
     expect($component->strengthMessages()['strong'])->toBe('Very Strong!');
 });
 
 it('loads min length from config', function () {
     config(['ui-kit.password.min_length' => 12]);
-    $component = new PasswordInput();
+    $component = new PasswordInput;
     expect($component->minLength())->toBe(12);
 });
 
 it('defaults to strength meter and show/hide enabled', function () {
-    $component = new PasswordInput();
+    $component = new PasswordInput;
     expect($component->strengthMeter)->toBeTrue();
     expect($component->showHide)->toBeTrue();
 });
@@ -52,7 +52,7 @@ it('auto-generates textarea id from name', function () {
 });
 
 it('defaults to 4 rows', function () {
-    $component = new Textarea();
+    $component = new Textarea;
     expect($component->rows)->toBe(4);
 });
 
@@ -63,7 +63,7 @@ it('auto-generates checkbox id from name', function () {
 });
 
 it('defaults value to 1', function () {
-    $component = new Checkbox();
+    $component = new Checkbox;
     expect($component->value)->toBe('1');
 });
 
@@ -75,17 +75,17 @@ it('detects form group errors', function () {
 
 // SearchInput Component
 it('defaults to search placeholder', function () {
-    $component = new SearchInput();
+    $component = new SearchInput;
     expect($component->placeholder)->toBe('Search...');
 });
 
 it('defaults to clearable', function () {
-    $component = new SearchInput();
+    $component = new SearchInput;
     expect($component->clearable)->toBeTrue();
 });
 
 it('defaults to 300ms debounce', function () {
-    $component = new SearchInput();
+    $component = new SearchInput;
     expect($component->debounce)->toBe(300);
 });
 
@@ -115,6 +115,6 @@ it('returns correct status variant classes', function () {
 });
 
 it('defaults to centered', function () {
-    $component = new StatusPanel();
+    $component = new StatusPanel;
     expect($component->centered)->toBeTrue();
 });

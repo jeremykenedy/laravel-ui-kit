@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jeremykenedy\LaravelUiKit\Components;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class PasswordInput extends Component
@@ -26,7 +27,7 @@ class PasswordInput extends Component
         $this->showHide = $showHide ?? ($defaults['show_hide'] ?? true);
     }
 
-    public function render(): \Illuminate\Contracts\View\View
+    public function render(): View
     {
         return view('ui::components.password-input');
     }
@@ -48,8 +49,8 @@ class PasswordInput extends Component
     public function strengthMessages(): array
     {
         return config('ui-kit.password.messages', [
-            'short'  => 'Too short',
-            'weak'   => 'Weak',
+            'short' => 'Too short',
+            'weak' => 'Weak',
             'medium' => 'Medium',
             'strong' => 'Strong',
         ]);

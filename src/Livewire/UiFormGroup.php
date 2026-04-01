@@ -9,9 +9,13 @@ use Livewire\Component;
 class UiFormGroup extends Component
 {
     public ?string $label = null;
+
     public ?string $for = null;
+
     public ?string $hint = null;
+
     public ?string $error = null;
+
     public bool $required = false;
 
     public function render()

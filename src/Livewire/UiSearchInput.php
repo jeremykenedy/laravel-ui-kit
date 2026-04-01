@@ -9,6 +9,7 @@ use Livewire\Component;
 class UiSearchInput extends Component
 {
     public string $query = '';
+
     public ?string $placeholder = 'Search...';
 
     public function updatedQuery(): void

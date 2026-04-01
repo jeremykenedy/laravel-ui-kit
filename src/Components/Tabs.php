@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jeremykenedy\LaravelUiKit\Components;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class Tabs extends Component
@@ -14,10 +15,9 @@ class Tabs extends Component
         public string $variant = 'underline',
         public string $id = 'tabs',
         public bool $vertical = false,
-    ) {
-    }
+    ) {}
 
-    public function render(): \Illuminate\Contracts\View\View
+    public function render(): View
     {
         return view('ui::components.tabs');
     }

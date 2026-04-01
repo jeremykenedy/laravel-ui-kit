@@ -61,10 +61,10 @@ class UiKitManager
     public function confirmDefaults(): array
     {
         return $this->config['confirm'] ?? [
-            'default_title'   => 'Confirm Action',
+            'default_title' => 'Confirm Action',
             'default_message' => 'Are you sure you want to proceed?',
-            'cancel_text'     => 'Cancel',
-            'confirm_text'    => 'Confirm',
+            'cancel_text' => 'Cancel',
+            'confirm_text' => 'Confirm',
         ];
     }
 
@@ -72,16 +72,16 @@ class UiKitManager
     {
         return $this->config['password'] ?? [
             'strength_meter' => true,
-            'show_hide'      => true,
-            'min_length'     => 8,
+            'show_hide' => true,
+            'min_length' => 8,
         ];
     }
 
     public function toastDefaults(): array
     {
         return $this->config['toast'] ?? [
-            'position'    => 'top-right',
-            'duration'    => 5000,
+            'position' => 'top-right',
+            'duration' => 5000,
             'max_visible' => 5,
         ];
     }

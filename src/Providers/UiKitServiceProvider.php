@@ -6,7 +6,35 @@ namespace Jeremykenedy\LaravelUiKit\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Jeremykenedy\LaravelUiKit\Console\InstallCommand;
+use Jeremykenedy\LaravelUiKit\Console\SwitchCommand;
+use Jeremykenedy\LaravelUiKit\Console\SwitchFrameworkCommand;
+use Jeremykenedy\LaravelUiKit\Livewire\UiAlert;
+use Jeremykenedy\LaravelUiKit\Livewire\UiAvatar;
+use Jeremykenedy\LaravelUiKit\Livewire\UiBadge;
+use Jeremykenedy\LaravelUiKit\Livewire\UiButton;
+use Jeremykenedy\LaravelUiKit\Livewire\UiCard;
+use Jeremykenedy\LaravelUiKit\Livewire\UiCheckbox;
+use Jeremykenedy\LaravelUiKit\Livewire\UiConfirm;
+use Jeremykenedy\LaravelUiKit\Livewire\UiDataTable;
+use Jeremykenedy\LaravelUiKit\Livewire\UiDropdown;
+use Jeremykenedy\LaravelUiKit\Livewire\UiFormGroup;
+use Jeremykenedy\LaravelUiKit\Livewire\UiIcon;
+use Jeremykenedy\LaravelUiKit\Livewire\UiInput;
+use Jeremykenedy\LaravelUiKit\Livewire\UiModal;
+use Jeremykenedy\LaravelUiKit\Livewire\UiNav;
+use Jeremykenedy\LaravelUiKit\Livewire\UiPagination;
+use Jeremykenedy\LaravelUiKit\Livewire\UiPasswordInput;
+use Jeremykenedy\LaravelUiKit\Livewire\UiSearchInput;
+use Jeremykenedy\LaravelUiKit\Livewire\UiSelect;
+use Jeremykenedy\LaravelUiKit\Livewire\UiStatCard;
+use Jeremykenedy\LaravelUiKit\Livewire\UiStatusPanel;
+use Jeremykenedy\LaravelUiKit\Livewire\UiTabs;
+use Jeremykenedy\LaravelUiKit\Livewire\UiTextarea;
+use Jeremykenedy\LaravelUiKit\Livewire\UiThemeToggle;
+use Jeremykenedy\LaravelUiKit\Livewire\UiToggle;
 use Jeremykenedy\LaravelUiKit\Services\UiKitManager;
+use Livewire\Livewire;
 
 class UiKitServiceProvider extends ServiceProvider
 {
@@ -41,9 +69,9 @@ class UiKitServiceProvider extends ServiceProvider
             ], 'ui-kit-views');
 
             $this->commands([
-                \Jeremykenedy\LaravelUiKit\Console\SwitchFrameworkCommand::class,
-                \Jeremykenedy\LaravelUiKit\Console\SwitchCommand::class,
-                \Jeremykenedy\LaravelUiKit\Console\InstallCommand::class,
+                SwitchFrameworkCommand::class,
+                SwitchCommand::class,
+                InstallCommand::class,
             ]);
         }
     }
@@ -77,39 +105,39 @@ class UiKitServiceProvider extends ServiceProvider
 
     protected function registerLivewireComponents(): void
     {
-        if (!class_exists(\Livewire\Livewire::class)) {
+        if (! class_exists(Livewire::class)) {
             return;
         }
 
         $livewireComponents = [
-            'ui-alert'          => \Jeremykenedy\LaravelUiKit\Livewire\UiAlert::class,
-            'ui-avatar'         => \Jeremykenedy\LaravelUiKit\Livewire\UiAvatar::class,
-            'ui-badge'          => \Jeremykenedy\LaravelUiKit\Livewire\UiBadge::class,
-            'ui-button'         => \Jeremykenedy\LaravelUiKit\Livewire\UiButton::class,
-            'ui-card'           => \Jeremykenedy\LaravelUiKit\Livewire\UiCard::class,
-            'ui-checkbox'       => \Jeremykenedy\LaravelUiKit\Livewire\UiCheckbox::class,
-            'ui-confirm'        => \Jeremykenedy\LaravelUiKit\Livewire\UiConfirm::class,
-            'ui-data-table'     => \Jeremykenedy\LaravelUiKit\Livewire\UiDataTable::class,
-            'ui-dropdown'       => \Jeremykenedy\LaravelUiKit\Livewire\UiDropdown::class,
-            'ui-form-group'     => \Jeremykenedy\LaravelUiKit\Livewire\UiFormGroup::class,
-            'ui-icon'           => \Jeremykenedy\LaravelUiKit\Livewire\UiIcon::class,
-            'ui-input'          => \Jeremykenedy\LaravelUiKit\Livewire\UiInput::class,
-            'ui-modal'          => \Jeremykenedy\LaravelUiKit\Livewire\UiModal::class,
-            'ui-nav'            => \Jeremykenedy\LaravelUiKit\Livewire\UiNav::class,
-            'ui-pagination'     => \Jeremykenedy\LaravelUiKit\Livewire\UiPagination::class,
-            'ui-password-input' => \Jeremykenedy\LaravelUiKit\Livewire\UiPasswordInput::class,
-            'ui-search-input'   => \Jeremykenedy\LaravelUiKit\Livewire\UiSearchInput::class,
-            'ui-select'         => \Jeremykenedy\LaravelUiKit\Livewire\UiSelect::class,
-            'ui-status-panel'   => \Jeremykenedy\LaravelUiKit\Livewire\UiStatusPanel::class,
-            'ui-tabs'           => \Jeremykenedy\LaravelUiKit\Livewire\UiTabs::class,
-            'ui-textarea'       => \Jeremykenedy\LaravelUiKit\Livewire\UiTextarea::class,
-            'ui-toggle'         => \Jeremykenedy\LaravelUiKit\Livewire\UiToggle::class,
-            'ui-theme-toggle'   => \Jeremykenedy\LaravelUiKit\Livewire\UiThemeToggle::class,
-            'ui-stat-card'      => \Jeremykenedy\LaravelUiKit\Livewire\UiStatCard::class,
+            'ui-alert' => UiAlert::class,
+            'ui-avatar' => UiAvatar::class,
+            'ui-badge' => UiBadge::class,
+            'ui-button' => UiButton::class,
+            'ui-card' => UiCard::class,
+            'ui-checkbox' => UiCheckbox::class,
+            'ui-confirm' => UiConfirm::class,
+            'ui-data-table' => UiDataTable::class,
+            'ui-dropdown' => UiDropdown::class,
+            'ui-form-group' => UiFormGroup::class,
+            'ui-icon' => UiIcon::class,
+            'ui-input' => UiInput::class,
+            'ui-modal' => UiModal::class,
+            'ui-nav' => UiNav::class,
+            'ui-pagination' => UiPagination::class,
+            'ui-password-input' => UiPasswordInput::class,
+            'ui-search-input' => UiSearchInput::class,
+            'ui-select' => UiSelect::class,
+            'ui-status-panel' => UiStatusPanel::class,
+            'ui-tabs' => UiTabs::class,
+            'ui-textarea' => UiTextarea::class,
+            'ui-toggle' => UiToggle::class,
+            'ui-theme-toggle' => UiThemeToggle::class,
+            'ui-stat-card' => UiStatCard::class,
         ];
 
         foreach ($livewireComponents as $name => $class) {
-            \Livewire\Livewire::component($name, $class);
+            Livewire::component($name, $class);
         }
     }
 }

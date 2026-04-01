@@ -24,7 +24,7 @@ trait HandlesFrameworkSetup
 
         $path = base_path('.env');
 
-        if (!file_exists($path)) {
+        if (! file_exists($path)) {
             return;
         }
 

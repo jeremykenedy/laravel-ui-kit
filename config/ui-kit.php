@@ -59,7 +59,7 @@ return [
     'dark_mode' => [
         'enabled' => env('UI_KIT_DARK_MODE', true),
         'default' => env('UI_KIT_DARK_MODE_DEFAULT', 'system'),
-        'toggle'  => true,
+        'toggle' => true,
     ],
 
     /*
@@ -69,10 +69,10 @@ return [
     */
 
     'confirm' => [
-        'default_title'   => 'Confirm Action',
+        'default_title' => 'Confirm Action',
         'default_message' => 'Are you sure you want to proceed?',
-        'cancel_text'     => 'Cancel',
-        'confirm_text'    => 'Confirm',
+        'cancel_text' => 'Cancel',
+        'confirm_text' => 'Confirm',
     ],
 
     /*
@@ -83,11 +83,11 @@ return [
 
     'password' => [
         'strength_meter' => true,
-        'show_hide'      => true,
-        'min_length'     => 8,
-        'messages'       => [
-            'short'  => 'Too short',
-            'weak'   => 'Weak',
+        'show_hide' => true,
+        'min_length' => 8,
+        'messages' => [
+            'short' => 'Too short',
+            'weak' => 'Weak',
             'medium' => 'Medium',
             'strong' => 'Strong',
         ],
@@ -100,9 +100,9 @@ return [
     */
 
     'datatable' => [
-        'per_page'   => 25,
+        'per_page' => 25,
         'searchable' => true,
-        'sortable'   => true,
+        'sortable' => true,
         'exportable' => false,
     ],
 
@@ -113,8 +113,8 @@ return [
     */
 
     'toast' => [
-        'position'    => 'top-right',
-        'duration'    => 5000,
+        'position' => 'top-right',
+        'duration' => 5000,
         'max_visible' => 5,
     ],
 

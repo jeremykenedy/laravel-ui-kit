@@ -9,7 +9,9 @@ use Livewire\Component;
 class UiCard extends Component
 {
     public ?string $title = null;
+
     public ?string $subtitle = null;
+
     public bool $bordered = true;
 
     public function render()

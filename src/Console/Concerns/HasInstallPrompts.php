@@ -71,7 +71,7 @@ trait HasInstallPrompts
         $css = $this->option('css');
 
         if ($css) {
-            if (!in_array($css, $valid)) {
+            if (! in_array($css, $valid)) {
                 $this->error("Invalid CSS framework: {$css}. Use: ".implode(', ', $valid));
 
                 return false;
@@ -87,7 +87,7 @@ trait HasInstallPrompts
         return select(
             label: 'Which CSS framework would you like to use?',
             options: [
-                'tailwind'   => 'Tailwind CSS v4',
+                'tailwind' => 'Tailwind CSS v4',
                 'bootstrap5' => 'Bootstrap 5',
                 'bootstrap4' => 'Bootstrap 4',
             ],
@@ -101,7 +101,7 @@ trait HasInstallPrompts
         $frontend = $this->option('frontend');
 
         if ($frontend) {
-            if (!in_array($frontend, $valid)) {
+            if (! in_array($frontend, $valid)) {
                 $this->error("Invalid frontend: {$frontend}. Use: ".implode(', ', $valid));
 
                 return false;
@@ -117,11 +117,11 @@ trait HasInstallPrompts
         return select(
             label: 'Which frontend framework would you like to use?',
             options: [
-                'blade'    => 'Blade + Alpine.js',
+                'blade' => 'Blade + Alpine.js',
                 'livewire' => 'Livewire 3',
-                'vue'      => 'Vue 3',
-                'react'    => 'React 18',
-                'svelte'   => 'Svelte 4',
+                'vue' => 'Vue 3',
+                'react' => 'React 18',
+                'svelte' => 'Svelte 4',
             ],
             default: config('ui-kit.frontend', 'blade'),
         );
@@ -130,17 +130,17 @@ trait HasInstallPrompts
     protected function showSummary(string $packageName, string $css, string $frontend): void
     {
         $cssLabels = [
-            'tailwind'   => 'Tailwind CSS v4',
+            'tailwind' => 'Tailwind CSS v4',
             'bootstrap5' => 'Bootstrap 5',
             'bootstrap4' => 'Bootstrap 4',
         ];
 
         $frontendLabels = [
-            'blade'    => 'Blade + Alpine.js',
+            'blade' => 'Blade + Alpine.js',
             'livewire' => 'Livewire 3',
-            'vue'      => 'Vue 3',
-            'react'    => 'React 18',
-            'svelte'   => 'Svelte 4',
+            'vue' => 'Vue 3',
+            'react' => 'React 18',
+            'svelte' => 'Svelte 4',
         ];
 
         $cssLabel = $cssLabels[$css] ?? $css;

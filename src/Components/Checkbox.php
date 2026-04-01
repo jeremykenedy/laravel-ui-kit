@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jeremykenedy\LaravelUiKit\Components;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class Checkbox extends Component
@@ -22,7 +23,7 @@ class Checkbox extends Component
         $this->id = $this->id ?? $this->name;
     }
 
-    public function render(): \Illuminate\Contracts\View\View
+    public function render(): View
     {
         return view('ui::components.checkbox');
     }

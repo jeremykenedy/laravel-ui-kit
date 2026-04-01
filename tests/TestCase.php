@@ -21,9 +21,9 @@ abstract class TestCase extends OrchestraTestCase
         // Force SQLite in-memory -- UI Kit tests NEVER touch a real database
         $app['config']->set('database.default', 'testing');
         $app['config']->set('database.connections.testing', [
-            'driver'   => 'sqlite',
+            'driver' => 'sqlite',
             'database' => ':memory:',
-            'prefix'   => '',
+            'prefix' => '',
         ]);
         $app['config']->set('database.connections.mysql', null);
         $app['config']->set('database.connections.pgsql', null);

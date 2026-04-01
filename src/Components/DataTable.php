@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jeremykenedy\LaravelUiKit\Components;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class DataTable extends Component
@@ -26,7 +27,7 @@ class DataTable extends Component
         $this->sortable = $sortable ?? ($defaults['sortable'] ?? true);
     }
 
-    public function render(): \Illuminate\Contracts\View\View
+    public function render(): View
     {
         return view('ui::components.data-table');
     }

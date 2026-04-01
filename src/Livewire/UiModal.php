@@ -10,7 +10,9 @@ use Livewire\Component;
 class UiModal extends Component
 {
     public bool $show = false;
+
     public string $title = '';
+
     public string $size = 'md';
 
     #[On('open-modal')]

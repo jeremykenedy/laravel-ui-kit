@@ -55,7 +55,7 @@ it('renders an alert with variant classes', function () {
 });
 
 it('renders dismissible alert by default', function () {
-    $component = new Alert();
+    $component = new Alert;
     expect($component->dismissible)->toBeTrue();
 });
 
@@ -100,7 +100,7 @@ it('returns error input classes when has error', function () {
 });
 
 it('returns normal input classes when no error', function () {
-    $component = new Input();
+    $component = new Input;
     expect($component->inputClasses())->toContain('border-gray-300');
 });
 

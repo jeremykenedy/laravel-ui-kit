@@ -9,8 +9,11 @@ use Livewire\Component;
 class UiPagination extends Component
 {
     public int $currentPage = 1;
+
     public int $lastPage = 1;
+
     public int $total = 0;
+
     public int $perPage = 15;
 
     public function goToPage(int $page): void

@@ -9,9 +9,13 @@ use Livewire\Component;
 class UiCheckbox extends Component
 {
     public ?string $name = null;
+
     public ?string $label = null;
+
     public ?string $description = null;
+
     public bool $checked = false;
+
     public bool $disabled = false;
 
     public function render()

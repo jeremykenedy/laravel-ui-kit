@@ -10,10 +10,15 @@ use Livewire\Component;
 class UiConfirm extends Component
 {
     public bool $show = false;
+
     public string $title = 'Are you sure?';
+
     public string $message = '';
+
     public string $confirmText = 'Confirm';
+
     public string $cancelText = 'Cancel';
+
     public string $action = '';
 
     #[On('confirm-action')]

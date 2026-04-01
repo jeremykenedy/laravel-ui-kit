@@ -9,7 +9,9 @@ use Livewire\Component;
 class UiStatusPanel extends Component
 {
     public string $message = '';
+
     public string $variant = 'info';
+
     public ?string $icon = null;
 
     public function render()

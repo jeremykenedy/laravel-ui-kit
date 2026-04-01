@@ -9,11 +9,12 @@ use Livewire\Component;
 class UiDropdown extends Component
 {
     public bool $open = false;
+
     public string $align = 'right';
 
     public function toggle(): void
     {
-        $this->open = !$this->open;
+        $this->open = ! $this->open;
     }
 
     public function close(): void

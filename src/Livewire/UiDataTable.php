@@ -9,7 +9,9 @@ use Livewire\Component;
 class UiDataTable extends Component
 {
     public array $headers = [];
+
     public string $sortField = '';
+
     public string $sortDirection = 'asc';
 
     public function sortBy(string $field): void

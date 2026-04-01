@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jeremykenedy\LaravelUiKit\Components;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class FormGroup extends Component
@@ -15,10 +16,9 @@ class FormGroup extends Component
         public ?string $error = null,
         public bool $required = false,
         public bool $inline = false,
-    ) {
-    }
+    ) {}
 
-    public function render(): \Illuminate\Contracts\View\View
+    public function render(): View
     {
         return view('ui::components.form-group');
     }

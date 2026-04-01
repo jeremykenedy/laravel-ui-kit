@@ -12,14 +12,14 @@ use Jeremykenedy\LaravelUiKit\Services\UiKitManager;
  * @method static string frontend()
  * @method static string iconSet()
  * @method static string prefix()
- * @method static bool darkModeEnabled()
+ * @method static bool   darkModeEnabled()
  * @method static string darkModeDefault()
- * @method static bool isTailwind()
- * @method static bool isBootstrap5()
- * @method static bool isBootstrap4()
- * @method static array confirmDefaults()
- * @method static array passwordDefaults()
- * @method static array toastDefaults()
+ * @method static bool   isTailwind()
+ * @method static bool   isBootstrap5()
+ * @method static bool   isBootstrap4()
+ * @method static array  confirmDefaults()
+ * @method static array  passwordDefaults()
+ * @method static array  toastDefaults()
  *
  * @see UiKitManager
  */

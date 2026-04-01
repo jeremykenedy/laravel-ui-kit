@@ -14,7 +14,7 @@ it('returns correct modal size classes', function () {
 });
 
 it('defaults to closeable modal', function () {
-    $component = new Modal;
+    $component = new Modal();
     expect($component->closeable)->toBeTrue();
     expect($component->static)->toBeFalse();
 });
@@ -22,7 +22,7 @@ it('defaults to closeable modal', function () {
 // Confirm Component
 it('loads confirm defaults from config', function () {
     config(['ui-kit.confirm.default_title' => 'Are you sure?']);
-    $component = new Confirm;
+    $component = new Confirm();
     expect($component->title)->toBe('Are you sure?');
 });
 

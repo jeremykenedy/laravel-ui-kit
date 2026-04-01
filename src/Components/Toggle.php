@@ -30,9 +30,9 @@ class Toggle extends Component
     public function trackSize(): string
     {
         return match ($this->size) {
-            'sm' => 'h-5 w-9',
-            'md' => 'h-6 w-11',
-            'lg' => 'h-7 w-14',
+            'sm'    => 'h-5 w-9',
+            'md'    => 'h-6 w-11',
+            'lg'    => 'h-7 w-14',
             default => 'h-6 w-11',
         };
     }
@@ -40,9 +40,9 @@ class Toggle extends Component
     public function thumbSize(): string
     {
         return match ($this->size) {
-            'sm' => 'h-4 w-4',
-            'md' => 'h-5 w-5',
-            'lg' => 'h-6 w-6',
+            'sm'    => 'h-4 w-4',
+            'md'    => 'h-5 w-5',
+            'lg'    => 'h-6 w-6',
             default => 'h-5 w-5',
         };
     }
@@ -50,9 +50,9 @@ class Toggle extends Component
     public function thumbTranslate(): string
     {
         return match ($this->size) {
-            'sm' => 'translate-x-4',
-            'md' => 'translate-x-5',
-            'lg' => 'translate-x-7',
+            'sm'    => 'translate-x-4',
+            'md'    => 'translate-x-5',
+            'lg'    => 'translate-x-7',
             default => 'translate-x-5',
         };
     }

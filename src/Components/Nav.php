@@ -14,7 +14,8 @@ class Nav extends Component
         public ?string $variant = null,
         public bool $pills = false,
         public bool $bordered = false,
-    ) {}
+    ) {
+    }
 
     public function render(): View
     {

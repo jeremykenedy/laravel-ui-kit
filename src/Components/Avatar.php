@@ -17,7 +17,8 @@ class Avatar extends Component
         public bool $rounded = true,
         public ?string $status = null,
         public ?string $initials = null,
-    ) {}
+    ) {
+    }
 
     public function render(): View
     {
@@ -27,12 +28,12 @@ class Avatar extends Component
     public function sizeClasses(): string
     {
         return match ($this->size) {
-            'xs' => 'h-6 w-6 text-xs',
-            'sm' => 'h-8 w-8 text-sm',
-            'md' => 'h-10 w-10 text-sm',
-            'lg' => 'h-12 w-12 text-base',
-            'xl' => 'h-16 w-16 text-lg',
-            '2xl' => 'h-20 w-20 text-xl',
+            'xs'    => 'h-6 w-6 text-xs',
+            'sm'    => 'h-8 w-8 text-sm',
+            'md'    => 'h-10 w-10 text-sm',
+            'lg'    => 'h-12 w-12 text-base',
+            'xl'    => 'h-16 w-16 text-lg',
+            '2xl'   => 'h-20 w-20 text-xl',
             default => 'h-10 w-10 text-sm',
         };
     }
@@ -40,11 +41,11 @@ class Avatar extends Component
     public function statusClasses(): string
     {
         return match ($this->status) {
-            'online' => 'bg-green-500',
+            'online'  => 'bg-green-500',
             'offline' => 'bg-gray-400',
-            'away' => 'bg-amber-500',
-            'busy' => 'bg-red-500',
-            default => '',
+            'away'    => 'bg-amber-500',
+            'busy'    => 'bg-red-500',
+            default   => '',
         };
     }
 

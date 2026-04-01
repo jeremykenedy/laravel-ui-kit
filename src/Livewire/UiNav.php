@@ -16,7 +16,7 @@ class UiNav extends Component
 
     public function toggleMobile(): void
     {
-        $this->mobileOpen = ! $this->mobileOpen;
+        $this->mobileOpen = !$this->mobileOpen;
     }
 
     public function render()

@@ -16,7 +16,8 @@ class Modal extends Component
         public bool $closeable = true,
         public bool $static = false,
         public ?string $variant = null,
-    ) {}
+    ) {
+    }
 
     public function render(): View
     {
@@ -26,11 +27,11 @@ class Modal extends Component
     public function sizeClasses(): string
     {
         return match ($this->size) {
-            'sm' => 'sm:max-w-sm',
-            'md' => 'sm:max-w-lg',
-            'lg' => 'sm:max-w-2xl',
-            'xl' => 'sm:max-w-4xl',
-            'full' => 'sm:max-w-full sm:mx-4',
+            'sm'    => 'sm:max-w-sm',
+            'md'    => 'sm:max-w-lg',
+            'lg'    => 'sm:max-w-2xl',
+            'xl'    => 'sm:max-w-4xl',
+            'full'  => 'sm:max-w-full sm:mx-4',
             default => 'sm:max-w-lg',
         };
     }

@@ -12,7 +12,13 @@ class UiNav extends Component
     public ?string $brandUrl = '/';
     public bool $mobileOpen = false;
 
-    public function toggleMobile(): void { $this->mobileOpen = ! $this->mobileOpen; }
+    public function toggleMobile(): void
+    {
+        $this->mobileOpen = !$this->mobileOpen;
+    }
 
-    public function render() { return view('ui-kit::livewire.nav'); }
+    public function render()
+    {
+        return view('ui-kit::livewire.nav');
+    }
 }

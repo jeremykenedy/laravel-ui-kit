@@ -13,7 +13,8 @@ class Pagination extends Component
         public bool $showInfo = true,
         public bool $simple = false,
         public string $size = 'md',
-    ) {}
+    ) {
+    }
 
     public function render(): \Illuminate\Contracts\View\View
     {

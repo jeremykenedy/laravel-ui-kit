@@ -12,5 +12,8 @@ class UiCard extends Component
     public ?string $subtitle = null;
     public bool $bordered = true;
 
-    public function render() { return view('ui-kit::livewire.card'); }
+    public function render()
+    {
+        return view('ui-kit::livewire.card');
+    }
 }

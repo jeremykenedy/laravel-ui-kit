@@ -20,7 +20,7 @@ class UiThemeToggle extends Component
 
     public function setTheme(string $mode): void
     {
-        if (! in_array($mode, ['light', 'dark', 'system'])) {
+        if (!in_array($mode, ['light', 'dark', 'system'])) {
             return;
         }
 

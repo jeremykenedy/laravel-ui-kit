@@ -83,6 +83,6 @@ it('registers all components', function () {
     ];
 
     foreach ($components as $component) {
-        expect(view()->exists("components.{$component}") || class_exists("Jeremykenedy\\LaravelUiKit\\Components\\" . str_replace(['ui::', '-'], ['', ''], ucfirst($component))))->toBeTrue();
+        expect(view()->exists("components.{$component}") || class_exists('Jeremykenedy\\LaravelUiKit\\Components\\'.str_replace(['ui::', '-'], ['', ''], ucfirst($component))))->toBeTrue();
     }
 });

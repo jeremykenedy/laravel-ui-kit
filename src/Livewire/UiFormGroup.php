@@ -14,5 +14,8 @@ class UiFormGroup extends Component
     public ?string $error = null;
     public bool $required = false;
 
-    public function render() { return view('ui-kit::livewire.form-group'); }
+    public function render()
+    {
+        return view('ui-kit::livewire.form-group');
+    }
 }

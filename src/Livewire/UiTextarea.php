@@ -18,5 +18,8 @@ class UiTextarea extends Component
     public bool $required = false;
     public ?string $error = null;
 
-    public function render() { return view('ui-kit::livewire.textarea'); }
+    public function render()
+    {
+        return view('ui-kit::livewire.textarea');
+    }
 }

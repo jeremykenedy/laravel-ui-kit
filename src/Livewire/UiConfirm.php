@@ -31,7 +31,13 @@ class UiConfirm extends Component
         $this->dispatch('confirmed', action: $this->action);
     }
 
-    public function cancelled(): void { $this->show = false; }
+    public function cancelled(): void
+    {
+        $this->show = false;
+    }
 
-    public function render() { return view('ui-kit::livewire.confirm'); }
+    public function render()
+    {
+        return view('ui-kit::livewire.confirm');
+    }
 }

@@ -19,5 +19,8 @@ class UiInput extends Component
     public bool $disabled = false;
     public ?string $autocomplete = null;
 
-    public function render() { return view('ui-kit::livewire.input'); }
+    public function render()
+    {
+        return view('ui-kit::livewire.input');
+    }
 }

@@ -19,5 +19,8 @@ class UiDataTable extends Component
         $this->dispatch('sort-changed', field: $field, direction: $this->sortDirection);
     }
 
-    public function render() { return view('ui-kit::livewire.data-table'); }
+    public function render()
+    {
+        return view('ui-kit::livewire.data-table');
+    }
 }

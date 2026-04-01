@@ -21,9 +21,9 @@ abstract class TestCase extends OrchestraTestCase
         // Force SQLite in-memory -- UI Kit tests NEVER touch a real database
         $app['config']->set('database.default', 'testing');
         $app['config']->set('database.connections.testing', [
-            'driver' => 'sqlite',
+            'driver'   => 'sqlite',
             'database' => ':memory:',
-            'prefix' => '',
+            'prefix'   => '',
         ]);
         $app['config']->set('database.connections.mysql', null);
         $app['config']->set('database.connections.pgsql', null);
@@ -53,7 +53,7 @@ abstract class TestCase extends OrchestraTestCase
             if ($dbDriver !== 'sqlite' || $dbName !== ':memory:') {
                 $this->fail(
                     "SAFETY: UI Kit tests detected a non-memory database: {$dbDriver}/{$dbName}. "
-                    . 'UI Kit tests must NEVER touch a real database.'
+                    .'UI Kit tests must NEVER touch a real database.'
                 );
             }
         }

@@ -17,5 +17,8 @@ class UiSelect extends Component
     public bool $disabled = false;
     public ?string $error = null;
 
-    public function render() { return view('ui-kit::livewire.select'); }
+    public function render()
+    {
+        return view('ui-kit::livewire.select');
+    }
 }

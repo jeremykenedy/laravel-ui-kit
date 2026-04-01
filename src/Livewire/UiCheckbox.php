@@ -14,5 +14,8 @@ class UiCheckbox extends Component
     public bool $checked = false;
     public bool $disabled = false;
 
-    public function render() { return view('ui-kit::livewire.checkbox'); }
+    public function render()
+    {
+        return view('ui-kit::livewire.checkbox');
+    }
 }

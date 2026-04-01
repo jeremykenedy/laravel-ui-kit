@@ -12,7 +12,8 @@ class Icon extends Component
         public string $name,
         public string $size = 'md',
         public ?string $class = null,
-    ) {}
+    ) {
+    }
 
     public function render(): \Illuminate\Contracts\View\View
     {
@@ -22,11 +23,11 @@ class Icon extends Component
     public function sizeClasses(): string
     {
         return match ($this->size) {
-            'xs' => 'w-3 h-3',
-            'sm' => 'w-4 h-4',
-            'md' => 'w-5 h-5',
-            'lg' => 'w-6 h-6',
-            'xl' => 'w-8 h-8',
+            'xs'    => 'w-3 h-3',
+            'sm'    => 'w-4 h-4',
+            'md'    => 'w-5 h-5',
+            'lg'    => 'w-6 h-6',
+            'xl'    => 'w-8 h-8',
             default => 'w-5 h-5',
         };
     }
@@ -41,9 +42,9 @@ class Icon extends Component
         $iconSet = $this->iconSet();
 
         return match ($iconSet) {
-            'fontawesome' => 'fa fa-' . $this->name,
-            'heroicons' => 'hero-' . $this->name,
-            default => 'lucide-' . $this->name,
+            'fontawesome' => 'fa fa-'.$this->name,
+            'heroicons'   => 'hero-'.$this->name,
+            default       => 'lucide-'.$this->name,
         };
     }
 }

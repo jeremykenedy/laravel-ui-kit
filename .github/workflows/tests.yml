@@ -1,0 +1,106 @@
+name: Tests
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master, develop]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['8.2', '8.3', '8.4']
+        laravel: ['12.*', '13.*']
+        include:
+          - laravel: '12.*'
+            testbench: '10.*'
+          - laravel: '13.*'
+            testbench: '10.*'
+
+    name: PHP ${{ matrix.php }} / Laravel ${{ matrix.laravel }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, pdo, pdo_sqlite
+          coverage: none
+
+      - name: Install dependencies
+        run: |
+          composer config allow-plugins.pestphp/pest-plugin true
+          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
+          composer update --prefer-dist --no-interaction
+
+      - name: Run Pest tests
+        run: vendor/bin/pest
+
+  lint:
+    runs-on: ubuntu-latest
+    name: Pint
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+
+      - name: Install dependencies
+        run: |
+          composer config allow-plugins.pestphp/pest-plugin true
+          composer install --prefer-dist --no-interaction
+
+      - name: Run Pint
+        run: vendor/bin/pint --test
+
+  js-check:
+    runs-on: ubuntu-latest
+    name: Frontend components
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify Vue components exist
+        run: |
+          for f in UiAlert UiBadge UiButton UiCard UiInput UiModal UiToggle; do
+            test -f "resources/js/vue/${f}.vue" || (echo "Missing Vue: ${f}.vue" && exit 1)
+          done
+
+      - name: Verify React components exist
+        run: |
+          for f in UiAlert UiBadge UiButton UiCard UiInput UiModal UiToggle; do
+            test -f "resources/js/react/${f}.jsx" || (echo "Missing React: ${f}.jsx" && exit 1)
+          done
+
+      - name: Verify Svelte components exist
+        run: |
+          for f in UiAlert UiBadge UiButton UiCard UiInput UiModal UiToggle; do
+            test -f "resources/js/svelte/${f}.svelte" || (echo "Missing Svelte: ${f}.svelte" && exit 1)
+          done
+
+      - name: Verify all 3 CSS framework view dirs
+        run: |
+          for fw in tailwind bootstrap5 bootstrap4; do
+            test -d "resources/views/${fw}/components" || (echo "Missing ${fw} views" && exit 1)
+          done
+
+      - name: Verify Livewire views exist
+        run: test -d "resources/views/livewire"
+
+      - name: Verify equal component count across CSS frameworks
+        run: |
+          tw=$(ls resources/views/tailwind/components/*.blade.php | wc -l)
+          bs5=$(ls resources/views/bootstrap5/components/*.blade.php | wc -l)
+          bs4=$(ls resources/views/bootstrap4/components/*.blade.php | wc -l)
+          echo "Tailwind: $tw, BS5: $bs5, BS4: $bs4"
+          [ "$bs5" -eq "$tw" ] || (echo "BS5 count mismatch" && exit 1)
+          [ "$bs4" -eq "$tw" ] || (echo "BS4 count mismatch" && exit 1)

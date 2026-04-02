@@ -9,6 +9,7 @@ use Illuminate\Support\ServiceProvider;
 use Jeremykenedy\LaravelUiKit\Console\InstallCommand;
 use Jeremykenedy\LaravelUiKit\Console\SwitchCommand;
 use Jeremykenedy\LaravelUiKit\Console\SwitchFrameworkCommand;
+use Jeremykenedy\LaravelUiKit\Console\UpdateCommand;
 use Jeremykenedy\LaravelUiKit\Livewire\UiAlert;
 use Jeremykenedy\LaravelUiKit\Livewire\UiAvatar;
 use Jeremykenedy\LaravelUiKit\Livewire\UiBadge;
@@ -69,9 +70,10 @@ class UiKitServiceProvider extends ServiceProvider
             ], 'ui-kit-views');
 
             $this->commands([
-                SwitchFrameworkCommand::class,
-                SwitchCommand::class,
                 InstallCommand::class,
+                UpdateCommand::class,
+                SwitchCommand::class,
+                SwitchFrameworkCommand::class,
             ]);
         }
     }

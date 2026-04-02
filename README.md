@@ -25,7 +25,9 @@
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
+- [Changing Frameworks](#changing-frameworks)
 - [Artisan Commands](#artisan-commands)
+- [Requirements](#requirements)
 - [Testing](#testing)
 - [License](#license)
 
@@ -132,30 +134,61 @@ import UiCard from '@/ui-kit/vue/UiCard.vue'
 </template>
 ```
 
+## Changing Frameworks
+
+After installation, use **update** or **switch** to change frameworks without losing configuration.
+
+### Update (Interactive)
+
+The update command walks through framework selection with an interactive menu:
+
+```bash
+php artisan ui-kit:update
+```
+
+Or pass options directly:
+
+```bash
+php artisan ui-kit:update --css=bootstrap5 --frontend=vue
+```
+
+| Option | Values | Description |
+|--------|--------|-------------|
+| `--css` | `tailwind`, `bootstrap5`, `bootstrap4` | Change CSS framework |
+| `--frontend` | `blade`, `livewire`, `vue`, `react`, `svelte` | Change frontend framework |
+
+### Switch (Quick)
+
+```bash
+php artisan ui-kit:switch --css=bootstrap5
+php artisan ui-kit:switch --frontend=livewire
+php artisan ui-kit:switch --css=tailwind --frontend=vue
+```
+
+To switch all packages globally:
+
+```bash
+php artisan ui:switch --css=bootstrap5 --frontend=vue
+```
+
+After switching, run `npm run build`.
+
 ## Artisan Commands
 
-### Install
+| Command | Description |
+|---------|-------------|
+| `ui-kit:install` | Fresh install with interactive prompts. Detects existing installation. |
+| `ui-kit:update` | Update framework selection interactively. Does not overwrite config. |
+| `ui-kit:switch` | Quick framework switch via flags. |
+| `ui:switch` | Switch CSS/frontend globally for all packages. |
 
-```bash
-# Interactive (prompts for CSS + frontend)
-php artisan ui-kit:install
+### Install Options
 
-# Non-interactive
-php artisan ui-kit:install --css=tailwind --frontend=blade
-```
-
-### Switch Frameworks
-
-```bash
-# Switch all packages globally
-php artisan ui:switch --css=bootstrap5
-php artisan ui:switch --frontend=livewire
-php artisan ui:switch --css=tailwind --frontend=vue
-
-# Switch UI Kit specifically
-php artisan ui-kit:switch --css=bootstrap4
-php artisan ui-kit:switch --frontend=react
-```
+| Flag | Description |
+|------|-------------|
+| `--css=` | CSS framework: `tailwind`, `bootstrap5`, `bootstrap4` |
+| `--frontend=` | Frontend: `blade`, `livewire`, `vue`, `react`, `svelte` |
+| `--force` | Skip reinstall confirmation when already installed |
 
 ## Requirements
 
@@ -167,10 +200,8 @@ php artisan ui-kit:switch --frontend=react
 ## Testing
 
 ```bash
-php artisan test --filter=UiKit
+./vendor/bin/pest --ci
 ```
-
-Tests are database-safe (SQLite :memory: only, all real DB connections disabled).
 
 ## License
 

@@ -2,10 +2,23 @@
 
 All notable changes to `jeremykenedy/laravel-ui-kit` are documented here.
 
-## Unreleased
+## v2.0.0 - 2026-09-11
 
-No breaking changes. Every component class, method, prop default, Blade tag and Artisan command
-that existed before still exists and behaves the same way.
+No API was removed or changed. Every component class, method, prop default, Blade tag and Artisan
+command that existed in 1.x still exists and behaves the same way. The major version reflects the
+behaviour changes listed under Upgrading, not a broken API.
+
+### Upgrading
+
+Most applications need no changes. Four things are visible, and only the first needs action:
+
+1. Theme toggle persistence is opt in. Set `UI_KIT_DARK_MODE_ROUTE=profile.dark-mode` if your
+   application defines that route and you want the selected theme persisted for signed in users.
+2. Icons render in Bootstrap 4 and 5, so anywhere an `icon` prop was passed now shows an icon.
+3. `multiple` selects submit an array, which changes the submitted payload shape.
+4. `datatable.searchable`, `datatable.sortable`, `password.strength_meter` and
+   `password.show_hide` take effect. The shipped defaults are all `true`, so nothing changes
+   unless a published config deliberately sets one to `false`.
 
 ### Fixed
 

@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'ہوم',
+    ],
 
     'confirm' => [
         'default_title'   => 'عمل کی تصدیق کریں',
@@ -28,6 +34,7 @@ return [
         'show'     => 'پاسورڈ دکھائیں',
         'hide'     => 'پاسورڈ چھپائیں',
         'strength' => [
+            'label'  => 'پاس ورڈ کی مضبوطی',
             'short'  => 'بہت چھوٹا',
             'weak'   => 'کمزور',
             'medium' => 'درمیانہ',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'آن',
         'off' => 'آف',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'مینو تبدیل کریں',
+    ],
+
+    'nav' => [
+        'toggle' => 'نیویگیشن تبدیل کریں',
     ],
 
     'modal' => [

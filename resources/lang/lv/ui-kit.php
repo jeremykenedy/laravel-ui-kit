@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Sakums',
+    ],
 
     'confirm' => [
         'default_title'   => 'Apstiprinat darbibu',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Radit paroli',
         'hide'     => 'Slepet paroli',
         'strength' => [
+            'label'  => 'Paroles stiprums',
             'short'  => 'Par isu',
             'weak'   => 'Vaja',
             'medium' => 'Videja',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'Iesl',
         'off' => 'Izsl',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'Parslegt izvelni',
+    ],
+
+    'nav' => [
+        'toggle' => 'Parslegt navigaciju',
     ],
 
     'modal' => [

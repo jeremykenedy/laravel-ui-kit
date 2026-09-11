@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Hem',
+    ],
 
     'confirm' => [
         'default_title'   => 'Bekrafta atgard',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Visa losenord',
         'hide'     => 'Dolj losenord',
         'strength' => [
+            'label'  => 'Losenordsstyrka',
             'short'  => 'For kort',
             'weak'   => 'Svagt',
             'medium' => 'Medel',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'Pa',
         'off' => 'Av',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'Vaxla meny',
+    ],
+
+    'nav' => [
+        'toggle' => 'Vaxla navigering',
     ],
 
     'modal' => [

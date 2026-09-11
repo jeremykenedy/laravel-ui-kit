@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Inicio',
+    ],
 
     'confirm' => [
         'default_title'   => 'Confirmar accion',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Mostrar contrasena',
         'hide'     => 'Ocultar contrasena',
         'strength' => [
+            'label'  => 'Seguridad de la contrasena',
             'short'  => 'Muy corta',
             'weak'   => 'Debil',
             'medium' => 'Media',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'Activado',
         'off' => 'Desactivado',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'Alternar menu',
+    ],
+
+    'nav' => [
+        'toggle' => 'Alternar navegacion',
     ],
 
     'modal' => [

@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'হোম',
+    ],
 
     'confirm' => [
         'default_title'   => 'ক্রিয়া নিশ্চিত করুন',
@@ -28,6 +34,7 @@ return [
         'show'     => 'পাসওয়ার্ড দেখান',
         'hide'     => 'পাসওয়ার্ড লুকান',
         'strength' => [
+            'label'  => 'পাসওয়ার্ডের শক্তি',
             'short'  => 'খুব ছোট',
             'weak'   => 'দুর্বল',
             'medium' => 'মাঝারি',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'চালু',
         'off' => 'বন্ধ',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'মেনু টগল করুন',
+    ],
+
+    'nav' => [
+        'toggle' => 'নেভিগেশন টগল করুন',
     ],
 
     'modal' => [

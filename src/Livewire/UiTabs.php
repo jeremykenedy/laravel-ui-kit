@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jeremykenedy\LaravelUiKit\Livewire;
 
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class UiTabs extends Component
@@ -12,10 +13,13 @@ class UiTabs extends Component
 
     public array $tabs = [];
 
-    public function mount(array $tabs = [], ?string $active = null): void
+    public array $panels = [];
+
+    public function mount(array $tabs = [], ?string $active = null, array $panels = []): void
     {
         $this->tabs = $tabs;
-        $this->activeTab = $active ?? ($tabs[0] ?? '');
+        $this->panels = $panels;
+        $this->activeTab = $active ?? (string) (array_key_first($tabs) !== null ? ($tabs[array_key_first($tabs)] ?? '') : '');
     }
 
     public function selectTab(string $tab): void
@@ -24,7 +28,7 @@ class UiTabs extends Component
         $this->dispatch('tab-changed', tab: $tab);
     }
 
-    public function render()
+    public function render(): View
     {
         return view('ui-kit::livewire.tabs');
     }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jeremykenedy\LaravelUiKit\Livewire;
 
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class UiFormGroup extends Component
@@ -18,7 +19,9 @@ class UiFormGroup extends Component
 
     public bool $required = false;
 
-    public function render()
+    public string $content = '';
+
+    public function render(): View
     {
         return view('ui-kit::livewire.form-group');
     }

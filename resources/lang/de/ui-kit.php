@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Startseite',
+    ],
 
     'confirm' => [
         'default_title'   => 'Aktion bestatigen',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Passwort anzeigen',
         'hide'     => 'Passwort verbergen',
         'strength' => [
+            'label'  => 'Passwortstarke',
             'short'  => 'Zu kurz',
             'weak'   => 'Schwach',
             'medium' => 'Mittel',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'Ein',
         'off' => 'Aus',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'Menu umschalten',
+    ],
+
+    'nav' => [
+        'toggle' => 'Navigation umschalten',
     ],
 
     'modal' => [

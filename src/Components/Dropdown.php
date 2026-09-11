@@ -6,8 +6,9 @@ namespace Jeremykenedy\LaravelUiKit\Components;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Jeremykenedy\LaravelUiKit\Contracts\ComponentContract;
 
-class Dropdown extends Component
+class Dropdown extends Component implements ComponentContract
 {
     public function __construct(
         public ?string $label = null,

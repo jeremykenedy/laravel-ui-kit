@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
 
     /*
@@ -7,7 +9,9 @@ return [
     | CSS Framework
     |--------------------------------------------------------------------------
     |
-    | The CSS framework to use for rendering components.
+    | The CSS framework to use for rendering components. Exactly one is active
+    | at runtime. An unknown value falls back to "tailwind".
+    |
     | Supported: "tailwind", "bootstrap5", "bootstrap4"
     |
     */
@@ -19,8 +23,9 @@ return [
     | Frontend Framework
     |--------------------------------------------------------------------------
     |
-    | The frontend JavaScript framework to use for interactive components.
-    | Supported: "blade", "vue", "react", "svelte"
+    | The frontend framework used for interactive components.
+    |
+    | Supported: "blade", "livewire", "vue", "react", "svelte"
     |
     */
 
@@ -32,7 +37,9 @@ return [
     |--------------------------------------------------------------------------
     |
     | The prefix used for Blade components. With the default "ui" prefix,
-    | components are rendered as <x-ui::button>, <x-ui::card>, etc.
+    | components render as <x-ui::button>, <x-ui::card>, and so on. A custom
+    | prefix is registered in addition to "ui", never instead of it, so any
+    | existing markup keeps working.
     |
     */
 
@@ -43,7 +50,8 @@ return [
     | Icon Set
     |--------------------------------------------------------------------------
     |
-    | The icon set to use for icon components and icon references.
+    | The icon set used by the icon component and by icon references.
+    |
     | Supported: "lucide", "heroicons", "fontawesome"
     |
     */
@@ -54,12 +62,25 @@ return [
     |--------------------------------------------------------------------------
     | Dark Mode
     |--------------------------------------------------------------------------
+    |
+    | Dark mode is class based: the theme toggle adds or removes the "dark"
+    | class on <html>. The chosen theme is stored in localStorage.
+    |
+    | persist_route / persist_url are optional. When either resolves, the theme
+    | toggle also sends the selected mode to that endpoint for signed in users.
+    | Leave both empty to keep the toggle entirely client side. An unregistered
+    | route name is ignored rather than throwing.
+    |
     */
 
     'dark_mode' => [
-        'enabled' => env('UI_KIT_DARK_MODE', true),
-        'default' => env('UI_KIT_DARK_MODE_DEFAULT', 'system'),
-        'toggle'  => true,
+        'enabled'        => env('UI_KIT_DARK_MODE', true),
+        'default'        => env('UI_KIT_DARK_MODE_DEFAULT', 'system'),
+        'toggle'         => true,
+        'storage_key'    => env('UI_KIT_DARK_MODE_STORAGE_KEY', 'theme'),
+        'persist_route'  => env('UI_KIT_DARK_MODE_ROUTE'),
+        'persist_url'    => env('UI_KIT_DARK_MODE_URL'),
+        'persist_method' => env('UI_KIT_DARK_MODE_METHOD', 'PUT'),
     ],
 
     /*
@@ -73,6 +94,7 @@ return [
         'default_message' => 'Are you sure you want to proceed?',
         'cancel_text'     => 'Cancel',
         'confirm_text'    => 'Confirm',
+        'modal_id'        => 'confirmModal',
     ],
 
     /*
@@ -104,6 +126,20 @@ return [
         'searchable' => true,
         'sortable'   => true,
         'exportable' => false,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Breadcrumbs
+    |--------------------------------------------------------------------------
+    |
+    | home_url is the target of the leading home crumb. Set it to null or pass
+    | :show-home="false" to the component to drop the crumb entirely.
+    |
+    */
+
+    'breadcrumbs' => [
+        'home_url' => env('UI_KIT_BREADCRUMBS_HOME', '/home'),
     ],
 
     /*

@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Inicio',
+    ],
 
     'confirm' => [
         'default_title'   => 'Confirmar acao',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Mostrar senha',
         'hide'     => 'Ocultar senha',
         'strength' => [
+            'label'  => 'Forca da senha',
             'short'  => 'Muito curta',
             'weak'   => 'Fraca',
             'medium' => 'Media',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'Ligado',
         'off' => 'Desligado',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'Alternar menu',
+    ],
+
+    'nav' => [
+        'toggle' => 'Alternar navegacao',
     ],
 
     'modal' => [

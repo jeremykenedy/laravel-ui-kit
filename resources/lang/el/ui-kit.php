@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Αρχικη',
+    ],
 
     'confirm' => [
         'default_title'   => 'Επιβεβαίωση ενέργειας',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Εμφάνιση κωδικού',
         'hide'     => 'Απόκρυψη κωδικού',
         'strength' => [
+            'label'  => 'Ισχυς κωδικου',
             'short'  => 'Πολύ μικρός',
             'weak'   => 'Αδύναμος',
             'medium' => 'Μέτριος',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'Ενεργό',
         'off' => 'Ανενεργό',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'Εναλλαγη μενου',
+    ],
+
+    'nav' => [
+        'toggle' => 'Εναλλαγη πλοηγησης',
     ],
 
     'modal' => [

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jeremykenedy\LaravelUiKit\Livewire;
 
+use Illuminate\Contracts\View\View;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -14,6 +15,8 @@ class UiModal extends Component
     public string $title = '';
 
     public string $size = 'md';
+
+    public string $content = '';
 
     #[On('open-modal')]
     public function open(string $title = ''): void
@@ -28,7 +31,7 @@ class UiModal extends Component
         $this->show = false;
     }
 
-    public function render()
+    public function render(): View
     {
         return view('ui-kit::livewire.modal');
     }

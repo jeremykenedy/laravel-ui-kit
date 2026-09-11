@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Domov',
+    ],
 
     'confirm' => [
         'default_title'   => 'Potvrdit akciu',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Zobrazit heslo',
         'hide'     => 'Skryt heslo',
         'strength' => [
+            'label'  => 'Sila hesla',
             'short'  => 'Prilis kratke',
             'weak'   => 'Slabe',
             'medium' => 'Stredne',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'Zapnute',
         'off' => 'Vypnute',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'Prepnut ponuku',
+    ],
+
+    'nav' => [
+        'toggle' => 'Prepnut navigaciu',
     ],
 
     'modal' => [

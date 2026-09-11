@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Нүүр',
+    ],
 
     'confirm' => [
         'default_title'   => 'Үйлдлийг баталгаажуулах',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Нууц үг харуулах',
         'hide'     => 'Нууц үг нуух',
         'strength' => [
+            'label'  => 'Нууц үгийн хүч',
             'short'  => 'Хэт богино',
             'weak'   => 'Сул',
             'medium' => 'Дунд',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'Асаах',
         'off' => 'Унтраах',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'Цэсийг сэлгэх',
+    ],
+
+    'nav' => [
+        'toggle' => 'Навигацыг сэлгэх',
     ],
 
     'modal' => [

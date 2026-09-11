@@ -1,7 +1,43 @@
-import React,{useState,useRef,useEffect} from 'react'
-export default function UiDropdown({trigger,align='right',children}){
-  const[open,setOpen]=useState(false)
-  const ref=useRef(null)
-  useEffect(()=>{const h=e=>{if(ref.current&&!ref.current.contains(e.target))setOpen(false)};document.addEventListener('mousedown',h);return()=>document.removeEventListener('mousedown',h)},[])
-  return(<div className="relative" ref={ref}><div onClick={()=>setOpen(!open)}>{trigger}</div>{open&&<div className={`absolute z-50 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 ${align==='right'?'right-0':'left-0'}`}><div className="py-1" onClick={()=>setOpen(false)}>{children}</div></div>}</div>)
+import React, { useEffect, useId, useRef, useState } from 'react'
+
+export default function UiDropdown({ trigger, align = 'right', children, toggleLabel = 'Toggle menu' }) {
+  const [open, setOpen] = useState(false)
+  const root = useRef(null)
+  const menuId = useId()
+
+  useEffect(() => {
+    function closeOnOutsideClick(event) {
+      if (root.current && !root.current.contains(event.target)) {
+        setOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', closeOnOutsideClick)
+
+    return () => document.removeEventListener('mousedown', closeOnOutsideClick)
+  }, [])
+
+  return (
+    <div className="relative" ref={root}>
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-haspopup="menu"
+        aria-controls={menuId}
+        aria-label={trigger ? undefined : toggleLabel}
+        onClick={() => setOpen(!open)}
+      >
+        {trigger}
+      </button>
+      {open && (
+        <div
+          id={menuId}
+          role="menu"
+          className={`absolute z-50 mt-2 w-48 rounded-md bg-white shadow-lg ring-1 ring-black/5 dark:bg-gray-800 ${align === 'right' ? 'right-0' : 'left-0'}`}
+        >
+          <div className="py-1" onClick={() => setOpen(false)}>{children}</div>
+        </div>
+      )}
+    </div>
+  )
 }

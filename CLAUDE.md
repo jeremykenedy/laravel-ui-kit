@@ -64,8 +64,8 @@ composer install
 
 The entire architecture revolves around config-driven view resolution:
 
-1. `config('ui-kit.css_framework')` selects `tailwind`, `bootstrap5`, or `bootstrap4`
-2. `UiKitServiceProvider::registerViews()` loads views from `resources/views/{css_framework}/` under the `ui` namespace
+1. `config('ui-kit.css_framework')` selects `tailwind`, `bootstrap5`, or `bootstrap4`. An unknown value falls back to `tailwind`
+2. `UiKitServiceProvider::registerViews()` loads views from `resources/views/{css_framework}/` under the `ui` namespace, with `tailwind` as the fallback path. The `ui-kit` namespace additionally covers the package views root so `ui-kit::livewire.*` resolves
 3. Component classes in `src/Components/` call `view('ui::components.button')` -- the namespace resolves to the active CSS framework directory
 4. Component classes are framework-agnostic; all CSS-specific markup lives in view files only
 
@@ -168,11 +168,13 @@ UI_KIT_DARK_MODE_DEFAULT=system  # system | light | dark
 ## Artisan Commands
 
 - `php artisan ui-kit:install` -- Interactive setup (CSS + frontend selection), publishes config, updates `.env`
+- `php artisan ui-kit:update` -- Change frameworks after install without overwriting config
 - `php artisan ui-kit:switch --css=bootstrap5 --frontend=vue` -- Switch frameworks, updates `.env`, clears caches
+- `php artisan ui:switch --css=bootstrap5 --frontend=vue` -- Switch frameworks for every package using this convention
 
 ## CI Matrix
 
-GitHub Actions tests against PHP 8.2/8.3/8.4 with Laravel 12/13. Three jobs: Pest tests, Pint lint check, and JS component file existence validation (ensures all frameworks have matching component counts).
+GitHub Actions tests PHP 8.2/8.3/8.4/8.5 against Laravel 12/13 with the matching testbench, plus a lowest-dependency run. Laravel 10 and 11 remain in the composer constraint but cannot be installed by default any more, so they are not in the matrix. Supporting jobs: Pint lint check, composer validate and audit, and frontend/template parity checks.
 
 ## Pint Configuration
 

@@ -1,8 +1,20 @@
 <div class="mb-3">
     @if($label)
-        <label for="{{ $id }}" class="form-label">{{ $label }} @if($required) <span class="text-danger">*</span> @endif</label>
+        <label for="{{ $id }}" class="form-label">
+            {{ $label }}
+            @if($required) <span class="text-danger" aria-hidden="true">*</span> @endif
+        </label>
     @endif
-    <select name="{{ $name }}" id="{{ $id }}" class="form-select {{ $hasError() ? 'is-invalid' : '' }}" @required($required) @disabled($disabled) @if($multiple) multiple @endif {{ $attributes }}>
+    <select
+        name="{{ $name }}{{ $multiple ? '[]' : '' }}"
+        id="{{ $id }}"
+        class="form-select {{ $hasError() ? 'is-invalid' : '' }}"
+        @required($required)
+        @disabled($disabled)
+        @if($multiple) multiple @endif
+        @if($hasError()) aria-invalid="true" aria-describedby="{{ $id }}-feedback" @endif
+        {{ $attributes }}
+    >
         @if($placeholder)
             <option value="" disabled @if(!$selected) selected @endif>{{ $placeholder }}</option>
         @endif
@@ -12,6 +24,6 @@
         {{ $slot }}
     </select>
     @if($hasError())
-        <div class="invalid-feedback">{{ $errorMessage() }}</div>
+        <div class="invalid-feedback" id="{{ $id }}-feedback">{{ $errorMessage() }}</div>
     @endif
 </div>

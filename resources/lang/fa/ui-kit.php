@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'خانه',
+    ],
 
     'confirm' => [
         'default_title'   => 'تایید عملیات',
@@ -28,6 +34,7 @@ return [
         'show'     => 'نمایش رمز عبور',
         'hide'     => 'پنهان کردن رمز عبور',
         'strength' => [
+            'label'  => 'قدرت رمز عبور',
             'short'  => 'خیلی کوتاه',
             'weak'   => 'ضعیف',
             'medium' => 'متوسط',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'روشن',
         'off' => 'خاموش',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'تغییر منو',
+    ],
+
+    'nav' => [
+        'toggle' => 'تغییر ناوبری',
     ],
 
     'modal' => [

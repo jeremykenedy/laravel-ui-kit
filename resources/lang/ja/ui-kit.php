@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'ホーム',
+    ],
 
     'confirm' => [
         'default_title'   => '操作の確認',
@@ -28,6 +34,7 @@ return [
         'show'     => 'パスワードを表示',
         'hide'     => 'パスワードを非表示',
         'strength' => [
+            'label'  => 'パスワードの強度',
             'short'  => '短すぎます',
             'weak'   => '弱い',
             'medium' => '普通',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'オン',
         'off' => 'オフ',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'メニューを切り替える',
+    ],
+
+    'nav' => [
+        'toggle' => 'ナビゲーションを切り替える',
     ],
 
     'modal' => [

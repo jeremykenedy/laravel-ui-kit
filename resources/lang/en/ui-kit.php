@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Home',
+    ],
 
     'confirm' => [
         'default_title'   => 'Confirm Action',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Show password',
         'hide'     => 'Hide password',
         'strength' => [
+            'label'  => 'Password strength',
             'short'  => 'Too short',
             'weak'   => 'Weak',
             'medium' => 'Medium',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'On',
         'off' => 'Off',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'Toggle menu',
+    ],
+
+    'nav' => [
+        'toggle' => 'Toggle navigation',
     ],
 
     'modal' => [

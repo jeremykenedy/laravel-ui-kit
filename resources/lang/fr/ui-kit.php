@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Accueil',
+    ],
 
     'confirm' => [
         'default_title'   => 'Confirmer l\'action',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Afficher le mot de passe',
         'hide'     => 'Masquer le mot de passe',
         'strength' => [
+            'label'  => 'Force du mot de passe',
             'short'  => 'Trop court',
             'weak'   => 'Faible',
             'medium' => 'Moyen',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'Actif',
         'off' => 'Inactif',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'Basculer le menu',
+    ],
+
+    'nav' => [
+        'toggle' => 'Basculer la navigation',
     ],
 
     'modal' => [

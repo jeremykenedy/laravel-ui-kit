@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Home',
+    ],
 
     'confirm' => [
         'default_title'   => 'Kumpirmahin ang aksyon',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Ipakita ang password',
         'hide'     => 'Itago ang password',
         'strength' => [
+            'label'  => 'Lakas ng password',
             'short'  => 'Masyadong maikli',
             'weak'   => 'Mahina',
             'medium' => 'Katamtaman',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'Bukas',
         'off' => 'Sarado',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'I-toggle ang menu',
+    ],
+
+    'nav' => [
+        'toggle' => 'I-toggle ang nabigasyon',
     ],
 
     'modal' => [

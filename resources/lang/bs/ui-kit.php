@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Pocetna',
+    ],
 
     'confirm' => [
         'default_title'   => 'Potvrdite radnju',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Pokazi lozinku',
         'hide'     => 'Sakrij lozinku',
         'strength' => [
+            'label'  => 'Jacina lozinke',
             'short'  => 'Prekratka',
             'weak'   => 'Slaba',
             'medium' => 'Srednja',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'Ukljuceno',
         'off' => 'Iskljuceno',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'Prikazi meni',
+    ],
+
+    'nav' => [
+        'toggle' => 'Prikazi navigaciju',
     ],
 
     'modal' => [

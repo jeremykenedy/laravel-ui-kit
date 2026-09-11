@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace Jeremykenedy\LaravelUiKit\Livewire;
 
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class UiDataTable extends Component
 {
     public array $headers = [];
+
+    public array $rows = [];
 
     public string $sortField = '';
 
@@ -21,7 +24,7 @@ class UiDataTable extends Component
         $this->dispatch('sort-changed', field: $field, direction: $this->sortDirection);
     }
 
-    public function render()
+    public function render(): View
     {
         return view('ui-kit::livewire.data-table');
     }

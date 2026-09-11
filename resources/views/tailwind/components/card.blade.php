@@ -1,4 +1,4 @@
-<div {{ $attributes->merge(['class' => 'rounded-lg bg-white dark:bg-gray-800 shadow-sm' . ($bordered ? ' border border-gray-200 dark:border-gray-700' : '') . ($hoverable ? ' hover:shadow-md transition-shadow duration-200' : '')]) }}>
+<div {{ $attributes->merge(['class' => 'rounded-lg bg-white dark:bg-gray-800 shadow-sm' . ($bordered ? ' border border-gray-200 dark:border-gray-700' : '') . ($hoverable ? ' hover:shadow-md transition-shadow duration-200 motion-reduce:transition-none' : '')]) }}>
     @if($title || isset($header))
         <div class="border-b border-gray-200 dark:border-gray-700 {{ $paddingClasses() }}">
             @if(isset($header))

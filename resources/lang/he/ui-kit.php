@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'דף הבית',
+    ],
 
     'confirm' => [
         'default_title'   => 'אישור פעולה',
@@ -28,6 +34,7 @@ return [
         'show'     => 'הצג סיסמה',
         'hide'     => 'הסתר סיסמה',
         'strength' => [
+            'label'  => 'חוזק הסיסמה',
             'short'  => 'קצרה מדי',
             'weak'   => 'חלשה',
             'medium' => 'בינונית',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'פעיל',
         'off' => 'כבוי',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'החלף תפריט',
+    ],
+
+    'nav' => [
+        'toggle' => 'החלף ניווט',
     ],
 
     'modal' => [

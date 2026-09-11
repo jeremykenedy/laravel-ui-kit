@@ -6,14 +6,15 @@ namespace Jeremykenedy\LaravelUiKit\Components;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Jeremykenedy\LaravelUiKit\Contracts\ComponentContract;
 
-class DataTable extends Component
+class DataTable extends Component implements ComponentContract
 {
     public function __construct(
         public array $headers = [],
         public ?object $rows = null,
-        public bool $searchable = true,
-        public bool $sortable = true,
+        public ?bool $searchable = null,
+        public ?bool $sortable = null,
         public bool $striped = true,
         public bool $hoverable = true,
         public bool $bordered = false,
@@ -22,9 +23,8 @@ class DataTable extends Component
         public ?string $searchPlaceholder = 'Search...',
         public ?string $id = 'data-table',
     ) {
-        $defaults = config('ui-kit.datatable', []);
-        $this->searchable = $searchable ?? ($defaults['searchable'] ?? true);
-        $this->sortable = $sortable ?? ($defaults['sortable'] ?? true);
+        $this->searchable ??= (bool) config('ui-kit.datatable.searchable', true);
+        $this->sortable ??= (bool) config('ui-kit.datatable.sortable', true);
     }
 
     public function render(): View

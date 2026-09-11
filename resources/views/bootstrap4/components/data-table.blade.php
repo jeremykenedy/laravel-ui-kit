@@ -1,17 +1,29 @@
 <div {{ $attributes->merge(['id' => $id]) }}>
-    @if($searchable) <div class="mb-3"><x-ui::search-input :placeholder="$searchPlaceholder" /></div> @endif
+    @if($searchable)
+        <div class="mb-3">
+            <x-ui::search-input :placeholder="$searchPlaceholder ?? __('ui-kit::ui-kit.search.placeholder')" />
+        </div>
+    @endif
     <div class="table-responsive">
         <table class="table {{ $striped ? 'table-striped' : '' }} {{ $hoverable ? 'table-hover' : '' }} {{ $bordered ? 'table-bordered' : '' }} {{ $compact ? 'table-sm' : '' }}">
             @if(count($headers) > 0)
-                <thead><tr>@foreach($headers as $header)<th>{{ is_array($header) ? ($header['label'] ?? $header) : $header }}</th>@endforeach</tr></thead>
+                <thead>
+                    <tr>
+                        @foreach($headers as $header)
+                            <th scope="col">{{ is_array($header) ? ($header['label'] ?? $header) : $header }}</th>
+                        @endforeach
+                    </tr>
+                </thead>
             @endif
             <tbody>
                 {{ $slot }}
                 @if(isset($rows) && method_exists($rows, 'isEmpty') && $rows->isEmpty())
-                    <tr><td colspan="{{ count($headers) }}" class="text-center text-muted py-4">{{ $emptyMessage }}</td></tr>
+                    <tr><td colspan="{{ max(count($headers), 1) }}" class="text-center text-muted py-4">{{ $emptyMessage ?? __('ui-kit::ui-kit.table.empty') }}</td></tr>
                 @endif
             </tbody>
         </table>
     </div>
-    @if(isset($rows) && method_exists($rows, 'hasPages') && $rows->hasPages()) <x-ui::pagination :paginator="$rows" /> @endif
+    @if(isset($rows) && method_exists($rows, 'hasPages') && $rows->hasPages())
+        <div class="mt-3"><x-ui::pagination :paginator="$rows" /></div>
+    @endif
 </div>

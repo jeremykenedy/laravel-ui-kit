@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Akey',
+    ],
 
     'confirm' => [
         'default_title'   => 'Konfime aksyon',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Montre modpas',
         'hide'     => 'Kache modpas',
         'strength' => [
+            'label'  => 'Fos modpas',
             'short'  => 'Twò kout',
             'weak'   => 'Fèb',
             'medium' => 'Mwayen',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'Ouvri',
         'off' => 'Fèmen',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'Chanje meni',
+    ],
+
+    'nav' => [
+        'toggle' => 'Chanje navigasyon',
     ],
 
     'modal' => [

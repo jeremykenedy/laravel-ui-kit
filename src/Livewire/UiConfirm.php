@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jeremykenedy\LaravelUiKit\Livewire;
 
+use Illuminate\Contracts\View\View;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -41,7 +42,7 @@ class UiConfirm extends Component
         $this->show = false;
     }
 
-    public function render()
+    public function render(): View
     {
         return view('ui-kit::livewire.confirm');
     }

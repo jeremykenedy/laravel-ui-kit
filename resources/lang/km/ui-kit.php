@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'ទំព័រដើម',
+    ],
 
     'confirm' => [
         'default_title'   => 'បញ្ជាក់សកម្មភាព',
@@ -28,6 +34,7 @@ return [
         'show'     => 'បង្ហាញពាក្យសម្ងាត់',
         'hide'     => 'លាក់ពាក្យសម្ងាត់',
         'strength' => [
+            'label'  => 'កម្លាំងពាក្យសម្ងាត់',
             'short'  => 'ខ្លីពេក',
             'weak'   => 'ខ្សោយ',
             'medium' => 'មធ្យម',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'បើក',
         'off' => 'បិទ',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'បិទបើកម៉ឺនុយ',
+    ],
+
+    'nav' => [
+        'toggle' => 'បិទបើកការរុករក',
     ],
 
     'modal' => [

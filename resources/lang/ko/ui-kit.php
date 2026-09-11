@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => '홈',
+    ],
 
     'confirm' => [
         'default_title'   => '작업 확인',
@@ -28,6 +34,7 @@ return [
         'show'     => '비밀번호 표시',
         'hide'     => '비밀번호 숨기기',
         'strength' => [
+            'label'  => '비밀번호 강도',
             'short'  => '너무 짧음',
             'weak'   => '약함',
             'medium' => '보통',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => '켜짐',
         'off' => '꺼짐',
+    ],
+
+    'dropdown' => [
+        'toggle' => '메뉴 전환',
+    ],
+
+    'nav' => [
+        'toggle' => '탐색 전환',
     ],
 
     'modal' => [

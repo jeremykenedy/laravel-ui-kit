@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Hjem',
+    ],
 
     'confirm' => [
         'default_title'   => 'Bekreft handling',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Vis passord',
         'hide'     => 'Skjul passord',
         'strength' => [
+            'label'  => 'Passordstyrke',
             'short'  => 'For kort',
             'weak'   => 'Svakt',
             'medium' => 'Middels',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'Pa',
         'off' => 'Av',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'Veksle meny',
+    ],
+
+    'nav' => [
+        'toggle' => 'Veksle navigasjon',
     ],
 
     'modal' => [

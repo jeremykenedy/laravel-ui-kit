@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Home',
+    ],
 
     'confirm' => [
         'default_title'   => 'Actie bevestigen',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Wachtwoord tonen',
         'hide'     => 'Wachtwoord verbergen',
         'strength' => [
+            'label'  => 'Wachtwoordsterkte',
             'short'  => 'Te kort',
             'weak'   => 'Zwak',
             'medium' => 'Gemiddeld',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'Aan',
         'off' => 'Uit',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'Menu wisselen',
+    ],
+
+    'nav' => [
+        'toggle' => 'Navigatie wisselen',
     ],
 
     'modal' => [

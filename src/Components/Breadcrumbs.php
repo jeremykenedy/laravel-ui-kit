@@ -16,7 +16,7 @@ class Breadcrumbs extends Component implements ComponentContract
     public array $items;
 
     /**
-     * @param  array<int, array{label: string, url?: string|null}>  $items
+     * @param array<int, array{label: string, url?: string|null}> $items
      */
     public function __construct(
         array $items = [],

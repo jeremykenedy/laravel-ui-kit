@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
+use Jeremykenedy\LaravelUiKit\Components\Breadcrumbs;
 use Jeremykenedy\LaravelUiKit\Components\Button;
 use Jeremykenedy\LaravelUiKit\Components\Icon;
+use Jeremykenedy\LaravelUiKit\Components\ThemeToggle;
 use Jeremykenedy\LaravelUiKit\Console\PackageInstallCommand;
 use Jeremykenedy\LaravelUiKit\Contracts\ComponentContract;
 use Jeremykenedy\LaravelUiKit\Facades\UiKit;
-use Jeremykenedy\LaravelUiKit\Components\Breadcrumbs;
-use Jeremykenedy\LaravelUiKit\Components\ThemeToggle;
 
 /**
  * These cover the public surface that applications already depend on. A change here

@@ -5,7 +5,8 @@ declare(strict_types=1);
 /**
  * Flatten a translation array into dot notation so locales can be compared key by key.
  *
- * @param  array<string, mixed>  $translations
+ * @param array<string, mixed> $translations
+ *
  * @return list<string>
  */
 function flattenKeys(array $translations, string $prefix = ''): array

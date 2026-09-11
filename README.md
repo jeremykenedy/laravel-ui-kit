@@ -186,6 +186,31 @@ scope, which is what `x-data` provides:
 </x-ui::modal>
 ```
 
+### Dropdowns
+
+With no trigger supplied the component renders its own button, which is focusable and keyboard
+operable out of the box:
+
+```blade
+<x-ui::dropdown label="Actions">
+    <a href="/edit">Edit</a>
+</x-ui::dropdown>
+```
+
+A supplied trigger is rendered as you wrote it, with no button semantics imposed on top, so
+passing a button or a link does not produce nested interactive elements. Make the trigger
+something focusable, since it is what keyboard users will reach:
+
+```blade
+<x-ui::dropdown>
+    <x-slot:trigger>
+        <x-ui::button variant="secondary">Actions</x-ui::button>
+    </x-slot:trigger>
+
+    <a href="/edit">Edit</a>
+</x-ui::dropdown>
+```
+
 ### Confirmations
 
 Place one `<x-ui::confirm />` in your layout. Any button with a `confirm` attribute opens it:

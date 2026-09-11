@@ -159,3 +159,11 @@ it('keeps the vue components off apis newer than the documented vue 3 baseline',
 
     expect($offenders)->toBe([]);
 });
+
+it('does not impose button semantics on a supplied dropdown trigger', function (string $directory) {
+    $extension = frontendDirectories()[$directory];
+    $contents = (string) file_get_contents(packagePath("resources/js/{$directory}/UiDropdown.{$extension}"));
+
+    expect($contents)->not->toContain('role="button"')
+        ->and($contents)->toContain('<button');
+})->with(array_keys(frontendDirectories()));

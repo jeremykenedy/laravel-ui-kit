@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'གཙོ་ངོས།',
+    ],
 
     'confirm' => [
         'default_title'   => 'བྱ་བ་གཏན་འཁེལ།',
@@ -28,6 +34,7 @@ return [
         'show'     => 'གསང་ཨང་སྟོན།',
         'hide'     => 'གསང་ཨང་སྦས།',
         'strength' => [
+            'label'  => 'གསང་ཨང་གི་ནུས་ཤུགས།',
             'short'  => 'ཐུང་དྲགས།',
             'weak'   => 'ཞན་པོ།',
             'medium' => 'འབྲིང་།',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'ཁ་ཕྱེ།',
         'off' => 'ཁ་རྒྱག',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'འདེམས་ཐོ་སྤོ་བ།',
+    ],
+
+    'nav' => [
+        'toggle' => 'འགྲུལ་བསྐྱོད་སྤོ་བ།',
     ],
 
     'modal' => [

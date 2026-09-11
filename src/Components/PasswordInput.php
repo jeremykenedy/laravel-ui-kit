@@ -6,8 +6,9 @@ namespace Jeremykenedy\LaravelUiKit\Components;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Jeremykenedy\LaravelUiKit\Contracts\ComponentContract;
 
-class PasswordInput extends Component
+class PasswordInput extends Component implements ComponentContract
 {
     public function __construct(
         public ?string $name = 'password',
@@ -22,9 +23,6 @@ class PasswordInput extends Component
         public ?string $error = null,
     ) {
         $this->id = $this->id ?? $this->name;
-        $defaults = config('ui-kit.password', []);
-        $this->strengthMeter = $strengthMeter ?? ($defaults['strength_meter'] ?? true);
-        $this->showHide = $showHide ?? ($defaults['show_hide'] ?? true);
     }
 
     public function render(): View

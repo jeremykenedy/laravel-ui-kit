@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'الرئيسية',
+    ],
 
     'confirm' => [
         'default_title'   => 'تأكيد الإجراء',
@@ -28,6 +34,7 @@ return [
         'show'     => 'إظهار كلمة المرور',
         'hide'     => 'إخفاء كلمة المرور',
         'strength' => [
+            'label'  => 'قوة كلمة المرور',
             'short'  => 'قصيرة جداً',
             'weak'   => 'ضعيفة',
             'medium' => 'متوسطة',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'تشغيل',
         'off' => 'إيقاف',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'تبديل القائمة',
+    ],
+
+    'nav' => [
+        'toggle' => 'تبديل التنقل',
     ],
 
     'modal' => [

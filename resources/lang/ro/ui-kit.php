@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Acasa',
+    ],
 
     'confirm' => [
         'default_title'   => 'Confirma actiunea',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Arata parola',
         'hide'     => 'Ascunde parola',
         'strength' => [
+            'label'  => 'Puterea parolei',
             'short'  => 'Prea scurta',
             'weak'   => 'Slaba',
             'medium' => 'Medie',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'Pornit',
         'off' => 'Oprit',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'Comuta meniul',
+    ],
+
+    'nav' => [
+        'toggle' => 'Comuta navigarea',
     ],
 
     'modal' => [

@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'होम',
+    ],
 
     'confirm' => [
         'default_title'   => 'कार्रवाई की पुष्टि करें',
@@ -28,6 +34,7 @@ return [
         'show'     => 'पासवर्ड दिखाएं',
         'hide'     => 'पासवर्ड छिपाएं',
         'strength' => [
+            'label'  => 'पासवर्ड की मजबूती',
             'short'  => 'बहुत छोटा',
             'weak'   => 'कमजोर',
             'medium' => 'मध्यम',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'चालू',
         'off' => 'बंद',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'मेन्यू टॉगल करें',
+    ],
+
+    'nav' => [
+        'toggle' => 'नेविगेशन टॉगल करें',
     ],
 
     'modal' => [

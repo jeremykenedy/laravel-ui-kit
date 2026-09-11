@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Ana sayfa',
+    ],
 
     'confirm' => [
         'default_title'   => 'Eylemi onayla',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Sifreyi goster',
         'hide'     => 'Sifreyi gizle',
         'strength' => [
+            'label'  => 'Parola gucu',
             'short'  => 'Cok kisa',
             'weak'   => 'Zayif',
             'medium' => 'Orta',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'Acik',
         'off' => 'Kapali',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'Menuyu ac kapat',
+    ],
+
+    'nav' => [
+        'toggle' => 'Gezinmeyi ac kapat',
     ],
 
     'modal' => [

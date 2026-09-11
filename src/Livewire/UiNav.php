@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jeremykenedy\LaravelUiKit\Livewire;
 
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class UiNav extends Component
@@ -12,6 +13,8 @@ class UiNav extends Component
 
     public ?string $brandUrl = '/';
 
+    public array $links = [];
+
     public bool $mobileOpen = false;
 
     public function toggleMobile(): void
@@ -19,7 +22,7 @@ class UiNav extends Component
         $this->mobileOpen = !$this->mobileOpen;
     }
 
-    public function render()
+    public function render(): View
     {
         return view('ui-kit::livewire.nav');
     }

@@ -1,7 +1,7 @@
 <div {{ $attributes->merge(['id' => $id]) }}>
     @if($searchable)
         <div class="mb-3">
-            <x-ui::search-input :placeholder="$searchPlaceholder" />
+            <x-ui::search-input :placeholder="$searchPlaceholder ?? __('ui-kit::ui-kit.search.placeholder')" />
         </div>
     @endif
     <div class="table-responsive">
@@ -18,7 +18,7 @@
             <tbody>
                 {{ $slot }}
                 @if(isset($rows) && method_exists($rows, 'isEmpty') && $rows->isEmpty())
-                    <tr><td colspan="{{ count($headers) }}" class="text-center text-muted py-4">{{ $emptyMessage }}</td></tr>
+                    <tr><td colspan="{{ max(count($headers), 1) }}" class="text-center text-muted py-4">{{ $emptyMessage ?? __('ui-kit::ui-kit.table.empty') }}</td></tr>
                 @endif
             </tbody>
         </table>

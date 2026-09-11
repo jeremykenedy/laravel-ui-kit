@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Heim',
+    ],
 
     'confirm' => [
         'default_title'   => 'Stadfestu adgerd',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Syna lykilord',
         'hide'     => 'Fela lykilord',
         'strength' => [
+            'label'  => 'Styrkur lykilords',
             'short'  => 'Of stutt',
             'weak'   => 'Veikt',
             'medium' => 'Midlungs',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'Kveikt',
         'off' => 'Slokkt',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'Skipta um valmynd',
+    ],
+
+    'nav' => [
+        'toggle' => 'Skipta um leidsogn',
     ],
 
     'modal' => [

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jeremykenedy\LaravelUiKit\Livewire;
 
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class UiPasswordInput extends Component
@@ -13,6 +14,8 @@ class UiPasswordInput extends Component
     public ?string $label = null;
 
     public bool $required = false;
+
+    public string $value = '';
 
     public bool $showPassword = false;
 
@@ -27,7 +30,7 @@ class UiPasswordInput extends Component
         $this->showPassword = !$this->showPassword;
     }
 
-    public function render()
+    public function render(): View
     {
         return view('ui-kit::livewire.password-input');
     }

@@ -6,8 +6,9 @@ namespace Jeremykenedy\LaravelUiKit\Components;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Jeremykenedy\LaravelUiKit\Contracts\ComponentContract;
 
-class Textarea extends Component
+class Textarea extends Component implements ComponentContract
 {
     public function __construct(
         public ?string $name = null,

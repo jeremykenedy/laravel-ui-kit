@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Главная',
+    ],
 
     'confirm' => [
         'default_title'   => 'Подтвердить действие',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Показать пароль',
         'hide'     => 'Скрыть пароль',
         'strength' => [
+            'label'  => 'Надежность пароля',
             'short'  => 'Слишком короткий',
             'weak'   => 'Слабый',
             'medium' => 'Средний',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'Вкл',
         'off' => 'Выкл',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'Переключить меню',
+    ],
+
+    'nav' => [
+        'toggle' => 'Переключить навигацию',
     ],
 
     'modal' => [

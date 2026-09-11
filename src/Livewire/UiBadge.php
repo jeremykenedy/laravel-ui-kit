@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jeremykenedy\LaravelUiKit\Livewire;
 
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class UiBadge extends Component
@@ -16,7 +17,9 @@ class UiBadge extends Component
 
     public bool $dot = false;
 
-    public function render()
+    public string $content = '';
+
+    public function render(): View
     {
         return view('ui-kit::livewire.badge');
     }

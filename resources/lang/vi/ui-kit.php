@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Trang chu',
+    ],
 
     'confirm' => [
         'default_title'   => 'Xac nhan hanh dong',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Hien mat khau',
         'hide'     => 'An mat khau',
         'strength' => [
+            'label'  => 'Do manh mat khau',
             'short'  => 'Qua ngan',
             'weak'   => 'Yeu',
             'medium' => 'Trung binh',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'Bat',
         'off' => 'Tat',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'Bat tat menu',
+    ],
+
+    'nav' => [
+        'toggle' => 'Bat tat dieu huong',
     ],
 
     'modal' => [

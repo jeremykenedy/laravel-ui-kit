@@ -1,17 +1,26 @@
 {
     "name": "jeremykenedy/laravel-ui-kit",
-    "description": "A multi-framework UI component library for Laravel. Supports Tailwind CSS, Bootstrap 5, and Bootstrap 4 with Blade, Vue, React, and Svelte frontends.",
+    "description": "A multi-framework UI component library for Laravel. Supports Tailwind CSS, Bootstrap 5, and Bootstrap 4 with Blade, Livewire, Vue, React, and Svelte frontends.",
     "keywords": [
         "laravel",
         "ui",
+        "ui-kit",
         "components",
+        "blade-components",
+        "design-system",
         "tailwind",
+        "tailwindcss",
         "bootstrap",
         "blade",
+        "livewire",
+        "alpinejs",
         "vue",
         "react",
-        "svelte"
+        "svelte",
+        "dark-mode",
+        "accessibility"
     ],
+    "homepage": "https://github.com/jeremykenedy/laravel-ui-kit",
     "license": "MIT",
     "type": "library",
     "authors": [
@@ -20,16 +29,27 @@
             "email": "jeremykenedy@gmail.com"
         }
     ],
+    "support": {
+        "issues": "https://github.com/jeremykenedy/laravel-ui-kit/issues",
+        "source": "https://github.com/jeremykenedy/laravel-ui-kit"
+    },
     "require": {
-        "php": "^8.2|^8.3",
+        "php": "^8.2|^8.3|^8.4|^8.5",
+        "illuminate/console": "^10.0|^11.0|^12.0|^13.0",
+        "illuminate/contracts": "^10.0|^11.0|^12.0|^13.0",
         "illuminate/support": "^10.0|^11.0|^12.0|^13.0",
         "illuminate/view": "^10.0|^11.0|^12.0|^13.0"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
+        "livewire/livewire": "^3.0|^4.0",
         "orchestra/testbench": "^8.0|^9.0|^10.0|^11.0",
         "pestphp/pest": "^2.0|^3.0|^4.0",
         "pestphp/pest-plugin-laravel": "^2.0|^3.0|^4.0"
+    },
+    "suggest": {
+        "livewire/livewire": "Required to use the Livewire component wrappers (^3.0|^4.0).",
+        "laravel/prompts": "Provides the interactive install and update prompts (bundled with Laravel 10+)."
     },
     "autoload": {
         "psr-4": {
@@ -40,6 +60,23 @@
         "psr-4": {
             "Jeremykenedy\\LaravelUiKit\\Tests\\": "tests/"
         }
+    },
+    "scripts": {
+        "test": "@php vendor/bin/pest --ci",
+        "test:coverage": "@php vendor/bin/pest --coverage --ci",
+        "lint": "@php vendor/bin/pint",
+        "lint:test": "@php vendor/bin/pint --test",
+        "check": [
+            "@lint:test",
+            "@test"
+        ]
+    },
+    "scripts-descriptions": {
+        "test": "Run the Pest test suite.",
+        "test:coverage": "Run the Pest test suite with coverage.",
+        "lint": "Fix code style with Laravel Pint.",
+        "lint:test": "Check code style with Laravel Pint without making changes.",
+        "check": "Run the style check followed by the test suite."
     },
     "extra": {
         "laravel": {

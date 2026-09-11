@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Jeremykenedy\LaravelUiKit\Tests;
 
 use Jeremykenedy\LaravelUiKit\Providers\UiKitServiceProvider;
+use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase
@@ -12,6 +13,7 @@ abstract class TestCase extends OrchestraTestCase
     protected function getPackageProviders($app): array
     {
         return [
+            LivewireServiceProvider::class,
             UiKitServiceProvider::class,
         ];
     }
@@ -28,6 +30,8 @@ abstract class TestCase extends OrchestraTestCase
         $app['config']->set('database.connections.mysql', null);
         $app['config']->set('database.connections.pgsql', null);
         $app['config']->set('database.connections.sqlsrv', null);
+
+        $app['config']->set('app.key', 'base64:'.base64_encode(random_bytes(32)));
 
         // UI Kit config
         $app['config']->set('ui-kit.css_framework', 'tailwind');

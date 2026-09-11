@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => '首页',
+    ],
 
     'confirm' => [
         'default_title'   => '确认操作',
@@ -28,6 +34,7 @@ return [
         'show'     => '显示密码',
         'hide'     => '隐藏密码',
         'strength' => [
+            'label'  => '密码强度',
             'short'  => '太短',
             'weak'   => '弱',
             'medium' => '中',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => '开',
         'off' => '关',
+    ],
+
+    'dropdown' => [
+        'toggle' => '切换菜单',
+    ],
+
+    'nav' => [
+        'toggle' => '切换导航',
     ],
 
     'modal' => [

@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Hjem',
+    ],
 
     'confirm' => [
         'default_title'   => 'Bekraeft handling',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Vis adgangskode',
         'hide'     => 'Skjul adgangskode',
         'strength' => [
+            'label'  => 'Adgangskodestyrke',
             'short'  => 'For kort',
             'weak'   => 'Svag',
             'medium' => 'Middel',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'Til',
         'off' => 'Fra',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'Skift menu',
+    ],
+
+    'nav' => [
+        'toggle' => 'Skift navigation',
     ],
 
     'modal' => [

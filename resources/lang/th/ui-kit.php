@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'หน้าแรก',
+    ],
 
     'confirm' => [
         'default_title'   => 'ยืนยันการดำเนินการ',
@@ -28,6 +34,7 @@ return [
         'show'     => 'แสดงรหัสผ่าน',
         'hide'     => 'ซ่อนรหัสผ่าน',
         'strength' => [
+            'label'  => 'ความแข็งแรงของรหัสผ่าน',
             'short'  => 'สั้นเกินไป',
             'weak'   => 'อ่อน',
             'medium' => 'ปานกลาง',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'เปิด',
         'off' => 'ปิด',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'สลับเมนู',
+    ],
+
+    'nav' => [
+        'toggle' => 'สลับการนำทาง',
     ],
 
     'modal' => [

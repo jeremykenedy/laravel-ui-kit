@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jeremykenedy\LaravelUiKit\Livewire;
 
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class UiSelect extends Component
@@ -24,7 +25,7 @@ class UiSelect extends Component
 
     public ?string $error = null;
 
-    public function render()
+    public function render(): View
     {
         return view('ui-kit::livewire.select');
     }

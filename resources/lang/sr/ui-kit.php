@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Почетна',
+    ],
 
     'confirm' => [
         'default_title'   => 'Потврди акцију',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Прикажи лозинку',
         'hide'     => 'Сакриј лозинку',
         'strength' => [
+            'label'  => 'Јачина лозинке',
             'short'  => 'Прекратка',
             'weak'   => 'Слаба',
             'medium' => 'Средња',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'Укљ',
         'off' => 'Искљ',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'Промени мени',
+    ],
+
+    'nav' => [
+        'toggle' => 'Промени навигацију',
     ],
 
     'modal' => [

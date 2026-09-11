@@ -6,8 +6,9 @@ namespace Jeremykenedy\LaravelUiKit\Components;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Jeremykenedy\LaravelUiKit\Contracts\ComponentContract;
 
-class Avatar extends Component
+class Avatar extends Component implements ComponentContract
 {
     public function __construct(
         public ?string $src = null,
@@ -52,17 +53,18 @@ class Avatar extends Component
     public function computedInitials(): string
     {
         if ($this->initials) {
-            return strtoupper(substr($this->initials, 0, 2));
+            return mb_strtoupper(mb_substr($this->initials, 0, 2));
         }
 
         if ($this->alt) {
-            $words = explode(' ', $this->alt);
+            $words = preg_split('/\\s+/', trim($this->alt)) ?: [];
             $initials = '';
-            foreach (array_slice($words, 0, 2) as $word) {
-                $initials .= strtoupper(substr($word, 0, 1));
+
+            foreach (array_slice(array_filter($words), 0, 2) as $word) {
+                $initials .= mb_strtoupper(mb_substr($word, 0, 1));
             }
 
-            return $initials;
+            return $initials !== '' ? $initials : '?';
         }
 
         return '?';

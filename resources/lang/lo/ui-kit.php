@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'ໜ້າຫຼັກ',
+    ],
 
     'confirm' => [
         'default_title'   => 'ຢືນຢັນການດຳເນີນການ',
@@ -28,6 +34,7 @@ return [
         'show'     => 'ສະແດງລະຫັດຜ່ານ',
         'hide'     => 'ເຊື່ອງລະຫັດຜ່ານ',
         'strength' => [
+            'label'  => 'ຄວາມແຂງແຮງລະຫັດຜ່ານ',
             'short'  => 'ສັ້ນເກີນໄປ',
             'weak'   => 'ອ່ອນ',
             'medium' => 'ປານກາງ',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'ເປີດ',
         'off' => 'ປິດ',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'ສະຫຼັບເມນູ',
+    ],
+
+    'nav' => [
+        'toggle' => 'ສະຫຼັບການນຳທາງ',
     ],
 
     'modal' => [

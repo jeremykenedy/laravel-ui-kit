@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jeremykenedy\LaravelUiKit\Livewire;
 
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class UiCard extends Component
@@ -14,7 +15,9 @@ class UiCard extends Component
 
     public bool $bordered = true;
 
-    public function render()
+    public string $content = '';
+
+    public function render(): View
     {
         return view('ui-kit::livewire.card');
     }

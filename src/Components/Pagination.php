@@ -6,8 +6,9 @@ namespace Jeremykenedy\LaravelUiKit\Components;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Jeremykenedy\LaravelUiKit\Contracts\ComponentContract;
 
-class Pagination extends Component
+class Pagination extends Component implements ComponentContract
 {
     public function __construct(
         public ?object $paginator = null,

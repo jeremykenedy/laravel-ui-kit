@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jeremykenedy\LaravelUiKit\Livewire;
 
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class UiCheckbox extends Component
@@ -18,7 +19,7 @@ class UiCheckbox extends Component
 
     public bool $disabled = false;
 
-    public function render()
+    public function render(): View
     {
         return view('ui-kit::livewire.checkbox');
     }

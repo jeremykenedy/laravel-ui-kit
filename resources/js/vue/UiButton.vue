@@ -49,7 +49,7 @@ const sizeMap = {
 }
 
 const classes = computed(() => [
-  'inline-flex items-center justify-center font-medium rounded-lg transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2',
+  'inline-flex items-center justify-center font-medium rounded-lg transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
   sizeMap[props.size] || sizeMap.md,
   variantMap[props.variant] || variantMap.primary,
   props.block ? 'w-full' : '',

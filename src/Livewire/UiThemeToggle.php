@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace Jeremykenedy\LaravelUiKit\Livewire;
 
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class UiThemeToggle extends Component
 {
     public string $current = 'system';
+
+    public bool $menuOpen = false;
 
     public function mount(): void
     {
@@ -25,6 +28,7 @@ class UiThemeToggle extends Component
         }
 
         $this->current = $mode;
+        $this->menuOpen = false;
 
         $user = auth()->user();
         if ($user && method_exists($user, 'ensureProfile')) {
@@ -35,7 +39,7 @@ class UiThemeToggle extends Component
         $this->dispatch('theme-changed', mode: $mode);
     }
 
-    public function render()
+    public function render(): View
     {
         return view('ui-kit::livewire.theme-toggle');
     }

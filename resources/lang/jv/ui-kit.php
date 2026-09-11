@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Beranda',
+    ],
 
     'confirm' => [
         'default_title'   => 'Konfirmasi tumindak',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Tampilake sandi',
         'hide'     => 'Delikake sandi',
         'strength' => [
+            'label'  => 'Kekuatan sandi',
             'short'  => 'Cendhak banget',
             'weak'   => 'Lemah',
             'medium' => 'Sedhengan',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'Urip',
         'off' => 'Mati',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'Ganti menu',
+    ],
+
+    'nav' => [
+        'toggle' => 'Ganti navigasi',
     ],
 
     'modal' => [

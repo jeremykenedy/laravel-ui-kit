@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Strona glowna',
+    ],
 
     'confirm' => [
         'default_title'   => 'Potwierdz akcje',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Pokaz haslo',
         'hide'     => 'Ukryj haslo',
         'strength' => [
+            'label'  => 'Sila hasla',
             'short'  => 'Za krotkie',
             'weak'   => 'Slabe',
             'medium' => 'Srednie',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'Wl',
         'off' => 'Wyl',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'Przelacz menu',
+    ],
+
+    'nav' => [
+        'toggle' => 'Przelacz nawigacje',
     ],
 
     'modal' => [

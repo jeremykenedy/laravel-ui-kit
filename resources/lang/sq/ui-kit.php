@@ -1,6 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 return [
+
+    'breadcrumbs' => [
+        'home' => 'Kryefaqja',
+    ],
 
     'confirm' => [
         'default_title'   => 'Konfirmo veprimin',
@@ -28,6 +34,7 @@ return [
         'show'     => 'Shfaq fjalekalimin',
         'hide'     => 'Fshih fjalekalimin',
         'strength' => [
+            'label'  => 'Forca e fjalekalimit',
             'short'  => 'Shume i shkurter',
             'weak'   => 'I dobet',
             'medium' => 'Mesatar',
@@ -43,6 +50,14 @@ return [
     'toggle' => [
         'on'  => 'Ndezur',
         'off' => 'Fikur',
+    ],
+
+    'dropdown' => [
+        'toggle' => 'Ndrysho menune',
+    ],
+
+    'nav' => [
+        'toggle' => 'Ndrysho navigimin',
     ],
 
     'modal' => [

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jeremykenedy\LaravelUiKit\Livewire;
 
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class UiSearchInput extends Component
@@ -23,7 +24,7 @@ class UiSearchInput extends Component
         $this->dispatch('search', query: '');
     }
 
-    public function render()
+    public function render(): View
     {
         return view('ui-kit::livewire.search-input');
     }

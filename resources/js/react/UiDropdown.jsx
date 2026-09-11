@@ -1,6 +1,6 @@
 import React, { useEffect, useId, useRef, useState } from 'react'
 
-export default function UiDropdown({ trigger, align = 'right', children, toggleLabel = 'Toggle menu' }) {
+export default function UiDropdown({ trigger, align = 'right', children, toggleLabel = 'Toggle menu', label = 'Options' }) {
   const [open, setOpen] = useState(false)
   const root = useRef(null)
   const menuId = useId()
@@ -19,16 +19,27 @@ export default function UiDropdown({ trigger, align = 'right', children, toggleL
 
   return (
     <div className="relative" ref={root}>
-      <button
-        type="button"
-        aria-expanded={open}
-        aria-haspopup="menu"
-        aria-controls={menuId}
-        aria-label={trigger ? undefined : toggleLabel}
-        onClick={() => setOpen(!open)}
-      >
-        {trigger}
-      </button>
+      {trigger ? (
+        <div
+          aria-expanded={open}
+          aria-haspopup="menu"
+          aria-controls={menuId}
+          onClick={() => setOpen(!open)}
+        >
+          {trigger}
+        </div>
+      ) : (
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-haspopup="menu"
+          aria-controls={menuId}
+          aria-label={toggleLabel}
+          onClick={() => setOpen(!open)}
+        >
+          {label}
+        </button>
+      )}
       {open && (
         <div
           id={menuId}

@@ -91,6 +91,13 @@ Most applications need no changes. Four things are visible, and only the first n
 - User facing strings come from the translation files rather than being hardcoded in English.
 - `Avatar::computedInitials()` uses multibyte string functions.
 
+### Fixed after release
+
+- Dropdowns no longer wrap a supplied trigger in a button or a `role="button"` element. Passing a
+  button or a link produced nested interactive markup, which is invalid and breaks keyboard
+  behaviour. The trigger renders as written, and only the default trigger carries button
+  semantics. Applies to all three CSS frameworks and to Vue, React and Svelte.
+
 ### Known limitations
 
 - The stateful Livewire wrappers (confirm, data table, dropdown, modal, nav, pagination, password

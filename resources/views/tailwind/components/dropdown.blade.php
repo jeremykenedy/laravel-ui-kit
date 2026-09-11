@@ -4,24 +4,28 @@
     x-on:keydown.escape="close()"
     {{ $attributes->merge(['class' => 'relative inline-block text-left']) }}
 >
-    <div
-        role="button"
-        tabindex="0"
-        x-on:click="toggle()"
-        x-on:keydown.enter.prevent="toggle()"
-        x-on:keydown.space.prevent="toggle()"
-        :aria-expanded="open ? 'true' : 'false'"
-        aria-haspopup="menu"
-        aria-controls="{{ $dropdownId }}"
-    >
-        @if(isset($trigger))
+    @if(isset($trigger))
+        <div
+            x-on:click="toggle()"
+            :aria-expanded="open ? 'true' : 'false'"
+            aria-haspopup="menu"
+            aria-controls="{{ $dropdownId }}"
+        >
             {{ $trigger }}
-        @else
-            <x-ui::button variant="secondary" icon="chevron-down" icon-position="right">
-                {{ $label ?? __('ui-kit::ui-kit.dropdown.toggle') }}
-            </x-ui::button>
-        @endif
-    </div>
+        </div>
+    @else
+        <x-ui::button
+            variant="secondary"
+            icon="chevron-down"
+            icon-position="right"
+            x-on:click="toggle()"
+            ::aria-expanded="open ? 'true' : 'false'"
+            aria-haspopup="menu"
+            aria-controls="{{ $dropdownId }}"
+        >
+            {{ $label ?? __('ui-kit::ui-kit.dropdown.toggle') }}
+        </x-ui::button>
+    @endif
 
     <div
         id="{{ $dropdownId }}"

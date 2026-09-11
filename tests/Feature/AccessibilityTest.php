@@ -195,9 +195,18 @@ it('exposes the toggle checked state alongside its switch role', function () {
         ->assertSee('aria-checked', false);
 });
 
-it('gives the bootstrap dropdown trigger a native button so it works from the keyboard', function (string $framework) {
+it('does not nest interactive elements when a dropdown trigger is supplied', function (string $framework) {
     $template = (string) file_get_contents(packagePath("resources/views/{$framework}/components/dropdown.blade.php"));
+    $triggerBranch = explode('@else', $template)[0];
 
-    expect($template)->toContain('<button type="button"')
-        ->and($template)->not->toContain('role="button"');
-})->with(['bootstrap5', 'bootstrap4']);
+    expect($triggerBranch)->not->toContain('role="button"')
+        ->and($triggerBranch)->not->toContain('<button');
+})->with(cssFrameworks());
+
+it('renders the default dropdown trigger as a real button', function (string $framework) {
+    useCssFramework($framework);
+
+    $this->blade('<x-ui::dropdown label="Actions">items</x-ui::dropdown>')
+        ->assertSee('<button', false)
+        ->assertSee('aria-haspopup', false);
+})->with(cssFrameworks());

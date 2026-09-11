@@ -130,6 +130,9 @@ jobs:
       - name: Validate composer.json
         run: composer validate --strict --no-check-lock
 
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-interaction
+
       - name: Check for known vulnerabilities
         run: composer audit --no-interaction
 

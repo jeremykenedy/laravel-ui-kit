@@ -2,6 +2,26 @@
 
 All notable changes to `jeremykenedy/laravel-ui-kit` are documented here.
 
+## v2.0.1 - 2026-09-11
+
+A markup fix for the dropdown trigger. No API change, no configuration change.
+
+### Fixed
+
+- Dropdowns no longer wrap a supplied trigger in a button or a `role="button"` element. Passing a
+  button or a link as the trigger produced nested interactive elements, which is invalid markup
+  and breaks click and keyboard behaviour. The trigger now renders as written, with the click
+  handler and ARIA state on a plain wrapper, and only the default trigger the component renders
+  itself carries button semantics. Applies to Tailwind, Bootstrap 5, Bootstrap 4, Vue, React and
+  Svelte.
+
+### Changed
+
+- The default dropdown trigger carries `aria-expanded`, `aria-haspopup` and `aria-controls`
+  directly rather than inheriting them from a wrapper element.
+- The readme documents that a supplied trigger should itself be focusable, since it is the element
+  keyboard users reach.
+
 ## v2.0.0 - 2026-09-11
 
 No API was removed or changed. Every component class, method, prop default, Blade tag and Artisan
@@ -90,13 +110,6 @@ Most applications need no changes. Four things are visible, and only the first n
   slots. The previous templates referenced an undefined `$slot`.
 - User facing strings come from the translation files rather than being hardcoded in English.
 - `Avatar::computedInitials()` uses multibyte string functions.
-
-### Fixed after release
-
-- Dropdowns no longer wrap a supplied trigger in a button or a `role="button"` element. Passing a
-  button or a link produced nested interactive markup, which is invalid and breaks keyboard
-  behaviour. The trigger renders as written, and only the default trigger carries button
-  semantics. Applies to all three CSS frameworks and to Vue, React and Svelte.
 
 ### Known limitations
 

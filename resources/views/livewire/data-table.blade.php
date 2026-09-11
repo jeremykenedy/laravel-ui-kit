@@ -10,7 +10,7 @@
                     >
                         <button
                             type="button"
-                            wire:click="sortBy('{{ $header }}')"
+                            wire:click="sortBy(@js($header))"
                             class="cursor-pointer uppercase tracking-wider transition-colors hover:text-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 motion-reduce:transition-none dark:hover:text-gray-200"
                         >
                             {{ $header }}

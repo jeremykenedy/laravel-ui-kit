@@ -19,7 +19,7 @@ class UiTabs extends Component
     {
         $this->tabs = $tabs;
         $this->panels = $panels;
-        $this->activeTab = $active ?? ($tabs[0] ?? '');
+        $this->activeTab = $active ?? (string) (array_key_first($tabs) !== null ? ($tabs[array_key_first($tabs)] ?? '') : '');
     }
 
     public function selectTab(string $tab): void

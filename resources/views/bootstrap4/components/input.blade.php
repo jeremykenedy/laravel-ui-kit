@@ -17,7 +17,7 @@
             'readonly' => $readonly,
             'autocomplete' => $autocomplete,
             'aria-invalid' => $hasError() ? 'true' : null,
-            'aria-describedby' => ($hint && !$hasError() && $id) ? $id . '-hint' : null,
+            'aria-describedby' => $id ? ($hasError() ? $id . '-error' : ($hint ? $id . '-hint' : null)) : null,
             'class' => 'form-control' . ($hasError() ? ' is-invalid' : ''),
         ];
     @endphp
@@ -30,11 +30,11 @@
             @if($iconPosition === 'right')
                 <div class="input-group-append"><span class="input-group-text"><x-ui::icon :name="$icon" size="sm" aria-hidden="true" /></span></div>
             @endif
-            @if($hasError()) <div class="invalid-feedback">{{ $errorMessage() }}</div> @endif
+            @if($hasError()) <div class="invalid-feedback" @if($id) id="{{ $id }}-error" @endif>{{ $errorMessage() }}</div> @endif
         </div>
     @else
         <input {{ $attributes->merge($inputAttributes) }} />
-        @if($hasError()) <div class="invalid-feedback">{{ $errorMessage() }}</div> @endif
+        @if($hasError()) <div class="invalid-feedback" @if($id) id="{{ $id }}-error" @endif>{{ $errorMessage() }}</div> @endif
     @endif
     @if($hint && !$hasError())
         <small class="form-text text-muted" @if($id) id="{{ $id }}-hint" @endif>{{ $hint }}</small>

@@ -146,3 +146,58 @@ it('respects reduced motion in the tailwind templates', function () {
     expect($withTransitions)->not->toBeEmpty()
         ->and($withoutReducedMotion)->toBe([]);
 });
+
+it('connects a bootstrap validation message to its field', function (string $framework) {
+    useCssFramework($framework);
+
+    $this->blade('<x-ui::input id="email" name="email" error="Email is required" />')
+        ->assertSee('aria-describedby="email-error"', false)
+        ->assertSee('id="email-error"', false);
+})->with(['bootstrap5', 'bootstrap4']);
+
+it('connects a bootstrap textarea validation message to its field', function (string $framework) {
+    useCssFramework($framework);
+
+    $this->blade('<x-ui::textarea id="bio" name="bio" error="Bio is required" />')
+        ->assertSee('aria-describedby="bio-error"', false)
+        ->assertSee('id="bio-error"', false);
+})->with(['bootstrap5', 'bootstrap4']);
+
+it('connects a bootstrap checkbox validation message to its field', function (string $framework) {
+    useCssFramework($framework);
+
+    $this->blade('<x-ui::checkbox id="agree" name="agree" error="You must agree" />')
+        ->assertSee('aria-describedby="agree-error"', false)
+        ->assertSee('id="agree-error"', false);
+})->with(['bootstrap5', 'bootstrap4']);
+
+it('exposes a labelled icon font glyph to assistive technology', function (string $framework) {
+    useCssFramework($framework);
+    config(['ui-kit.icons' => 'fontawesome']);
+
+    $this->blade('<x-ui::icon name="user" aria-label="Account" />')
+        ->assertSee('aria-hidden="false"', false);
+})->with(cssFrameworks());
+
+it('hides an unlabelled icon font glyph from assistive technology', function (string $framework) {
+    useCssFramework($framework);
+    config(['ui-kit.icons' => 'fontawesome']);
+
+    $this->blade('<x-ui::icon name="user" />')
+        ->assertSee('aria-hidden="true"', false);
+})->with(cssFrameworks());
+
+it('exposes the toggle checked state alongside its switch role', function () {
+    useCssFramework('tailwind');
+
+    $this->blade('<x-ui::toggle name="active" label="Active" checked />')
+        ->assertSee('role="switch"', false)
+        ->assertSee('aria-checked', false);
+});
+
+it('gives the bootstrap dropdown trigger a native button so it works from the keyboard', function (string $framework) {
+    $template = (string) file_get_contents(packagePath("resources/views/{$framework}/components/dropdown.blade.php"));
+
+    expect($template)->toContain('<button type="button"')
+        ->and($template)->not->toContain('role="button"');
+})->with(['bootstrap5', 'bootstrap4']);

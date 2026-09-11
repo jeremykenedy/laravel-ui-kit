@@ -5,6 +5,8 @@
     {{ $attributes->merge(['class' => 'relative inline-block text-left']) }}
 >
     <div
+        role="button"
+        tabindex="0"
         x-on:click="toggle()"
         x-on:keydown.enter.prevent="toggle()"
         x-on:keydown.space.prevent="toggle()"

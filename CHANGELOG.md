@@ -70,12 +70,20 @@ that existed before still exists and behaves the same way.
   and `aria-hidden` on decorative icons.
 - Modal and confirm own their transition on the root element instead of on each child.
 - The modal locks body scroll while open and moves focus to the dialog.
-- Livewire wrappers delegate to the matching Blade component, so they follow the active CSS
-  framework instead of always rendering Tailwind markup.
+- Presentational Livewire wrappers delegate to the matching Blade component, so they follow the
+  active CSS framework instead of always rendering Tailwind markup. The wrappers that hold their
+  own open or selected state still render Tailwind markup, which the readme now states plainly.
 - Livewire wrappers accept their content through a `content` property, since Livewire has no
   slots. The previous templates referenced an undefined `$slot`.
 - User facing strings come from the translation files rather than being hardcoded in English.
 - `Avatar::computedInitials()` uses multibyte string functions.
+
+### Known limitations
+
+- The stateful Livewire wrappers (confirm, data table, dropdown, modal, nav, pagination, search
+  input, tabs, theme toggle, toggle) render Tailwind markup under every CSS framework. Their
+  chrome depends on server driven open and selected state, which the stateless Blade component
+  cannot express. Under Bootstrap, use the Blade components with Alpine or publish and restyle.
 
 ### Removed
 

@@ -150,3 +150,33 @@ it('lets the breadcrumb home target be overridden', function () {
     expect((new Breadcrumbs())->resolvedHomeUrl())->toBe(url('/dashboard'))
         ->and((new Breadcrumbs(homeUrl: '/root'))->resolvedHomeUrl())->toBe('/root');
 });
+
+it('does not render a navigable link for a disabled button', function (string $framework) {
+    useCssFramework($framework);
+
+    $this->blade('<x-ui::button href="/reports" disabled>Reports</x-ui::button>')
+        ->assertDontSee('href="/reports"', false)
+        ->assertSee('aria-disabled="true"', false);
+})->with(cssFrameworks());
+
+it('keeps the link on an enabled button', function (string $framework) {
+    useCssFramework($framework);
+
+    $this->blade('<x-ui::button href="/reports">Reports</x-ui::button>')
+        ->assertSee('href="/reports"', false);
+})->with(cssFrameworks());
+
+it('does not wire the confirm dialog to a disabled button', function (string $framework) {
+    useCssFramework($framework);
+
+    $this->blade('<x-ui::button confirm="Sure?" disabled>Delete</x-ui::button>')
+        ->assertDontSee('open-confirm', false)
+        ->assertDontSee('data-confirm-message', false);
+})->with(cssFrameworks());
+
+it('passes consumer attributes to the search control itself', function (string $framework) {
+    useCssFramework($framework);
+
+    $this->blade('<x-ui::search-input data-testid="user-search" />')
+        ->assertSee('data-testid="user-search"', false);
+})->with(cssFrameworks());

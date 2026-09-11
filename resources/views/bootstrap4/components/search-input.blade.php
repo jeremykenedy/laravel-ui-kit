@@ -1,4 +1,4 @@
-<div {{ $attributes->merge(['class' => 'position-relative']) }} x-data="{ query: @js($value ?? '') }">
+<div class="position-relative" x-data="{ query: @js($value ?? '') }">
     <label for="{{ $id }}" class="sr-only">{{ $placeholder ?? __('ui-kit::ui-kit.search.placeholder') }}</label>
     <div class="input-group">
         <div class="input-group-prepend">
@@ -13,6 +13,7 @@
             x-model="query"
             @if($autofocus) autofocus @endif
             @if($debounce) x-on:input.debounce.{{ $debounce }}ms="$dispatch('search', { query: query })" @endif
+            {{ $attributes }}
         />
         @if($clearable)
             <div class="input-group-append">

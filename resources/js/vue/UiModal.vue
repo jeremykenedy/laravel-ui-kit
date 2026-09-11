@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, onUnmounted, useId } from 'vue'
+import { computed, onMounted, onUnmounted } from 'vue'
 
 const props = defineProps({
   modelValue: { type: Boolean, default: false },
@@ -45,7 +45,7 @@ const emit = defineEmits(['update:modelValue'])
 
 const sizes = { sm: 'sm:max-w-sm', md: 'sm:max-w-lg', lg: 'sm:max-w-2xl', xl: 'sm:max-w-4xl' }
 const sizeClass = computed(() => sizes[props.size] || sizes.md)
-const titleId = `ui-modal-title-${useId()}`
+const titleId = `ui-modal-title-${Math.random().toString(36).slice(2, 10)}`
 
 function close() {
   emit('update:modelValue', false)

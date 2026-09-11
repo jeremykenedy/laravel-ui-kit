@@ -203,15 +203,23 @@ name a form, a `confirmed` event is dispatched instead.
 
 ### Livewire Components
 
-The Livewire wrappers mirror the Blade components and delegate to them, so they follow the active
-CSS framework. Livewire has no slots, so content is passed as a property:
+The Livewire wrappers mirror the Blade components. Livewire has no slots, so content is passed as
+a property:
 
 ```blade
 <livewire:ui-alert variant="success" content="Settings saved." />
-<livewire:ui-data-table :headers="['name', 'email']" :rows="$users" />
+<livewire:ui-data-table :headers="['name', 'email']" :rows="$users->toArray()" />
 <livewire:ui-theme-toggle />
 <livewire:ui-confirm />
 ```
+
+Presentational wrappers (alert, badge, card, checkbox, form group, icon, input, password input,
+select, stat card, status panel, textarea) delegate to the matching Blade component, so they
+follow the configured CSS framework. The wrappers that hold their own open or selected state
+(confirm, data table, dropdown, modal, nav, pagination, search input, tabs, theme toggle, toggle)
+render Tailwind markup regardless of the configured framework, because their chrome cannot be
+expressed by the stateless Blade component. Under Bootstrap, prefer the Blade components with
+Alpine for those, or publish the views and restyle them.
 
 ### Vue / React / Svelte
 

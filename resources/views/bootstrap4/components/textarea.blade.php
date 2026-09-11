@@ -15,12 +15,12 @@
         @required($required)
         @disabled($disabled)
         @if($maxlength) maxlength="{{ $maxlength }}" @endif
-        @if($hasError()) aria-invalid="true" @endif
+        @if($hasError()) aria-invalid="true" aria-describedby="{{ $id }}-error" @endif
         @if($showCount && $maxlength) x-on:input="count = $event.target.value.length" @endif
         {{ $attributes }}
     >{{ $currentValue }}</textarea>
     @if($hasError())
-        <div class="invalid-feedback">{{ $errorMessage() }}</div>
+        <div class="invalid-feedback" id="{{ $id }}-error">{{ $errorMessage() }}</div>
     @endif
     @if($showCount && $maxlength)
         <small class="form-text text-muted text-right" aria-live="polite"><span x-text="count"></span>/{{ $maxlength }}</small>

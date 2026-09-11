@@ -10,7 +10,13 @@
         @disabled($disabled)
         @required($required)
         @if($hasError) aria-invalid="true" @endif
-        @if($description) aria-describedby="{{ $id }}-description" @endif
+        @php
+            $describedBy = collect([
+                $description ? $id . '-description' : null,
+                $hasError ? $id . '-error' : null,
+            ])->filter()->implode(' ');
+        @endphp
+        @if($describedBy) aria-describedby="{{ $describedBy }}" @endif
         {{ $attributes }}
     >
     @if($label)
@@ -23,6 +29,6 @@
         <small class="form-text text-muted d-block" id="{{ $id }}-description">{{ $description }}</small>
     @endif
     @if($hasError)
-        <div class="invalid-feedback">{{ $error ?? session('errors')->first($name) }}</div>
+        <div class="invalid-feedback" id="{{ $id }}-error">{{ $error ?? session('errors')->first($name) }}</div>
     @endif
 </div>

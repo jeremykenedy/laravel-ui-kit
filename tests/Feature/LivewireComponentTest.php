@@ -18,17 +18,25 @@ use Jeremykenedy\LaravelUiKit\Providers\UiKitServiceProvider;
 use Livewire\Livewire;
 
 it('mounts every livewire component by alias', function () {
-    foreach (array_keys(UiKitServiceProvider::LIVEWIRE_COMPONENTS) as $alias) {
+    $aliases = array_keys(UiKitServiceProvider::LIVEWIRE_COMPONENTS);
+
+    foreach ($aliases as $alias) {
         Livewire::test($alias)->assertOk();
     }
+
+    expect($aliases)->toHaveCount(24);
 });
 
 it('mounts every livewire component under each css framework', function (string $framework) {
     useCssFramework($framework);
+    $rendered = 0;
 
     foreach (UiKitServiceProvider::LIVEWIRE_COMPONENTS as $class) {
         Livewire::test($class)->assertOk();
+        $rendered++;
     }
+
+    expect($rendered)->toBe(24);
 })->with(cssFrameworks());
 
 it('hides the alert once it is dismissed', function () {
@@ -172,4 +180,28 @@ it('reveals and hides the password', function () {
         ->assertSet('showPassword', true)
         ->call('toggleVisibility')
         ->assertSet('showPassword', false);
+});
+
+it('encodes data table headers that contain quotes', function () {
+    Livewire::test(UiDataTable::class, ['headers' => ["Owner's name"]])
+        ->assertOk()
+        ->assertSee('Owner\\u0027s name', false);
+});
+
+it('encodes tab labels that contain quotes', function () {
+    Livewire::test(UiTabs::class, ['tabs' => ["Owner's tab"]])
+        ->assertOk()
+        ->assertSet('activeTab', "Owner's tab");
+});
+
+it('starts on the first tab when given an associative array', function () {
+    Livewire::test(UiTabs::class, ['tabs' => ['general' => 'General', 'billing' => 'Billing']])
+        ->assertSet('activeTab', 'General');
+});
+
+it('switches the password input type when the livewire action runs', function () {
+    Livewire::test(UiPasswordInput::class)
+        ->assertSee('type="password"', false)
+        ->call('toggleVisibility')
+        ->assertSee('type="text"', false);
 });

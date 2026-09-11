@@ -8,6 +8,7 @@
         class="peer sr-only"
         x-model="enabled"
         role="switch"
+        :aria-checked="enabled ? 'true' : 'false'"
         @disabled($disabled)
         @if($description) aria-describedby="{{ $id }}-description" @endif
     />

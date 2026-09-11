@@ -1,5 +1,5 @@
 @if($usesIconFont())
-    <i {{ $attributes->merge(['class' => $resolvedClass() . ' ' . ($class ?? ''), 'aria-hidden' => 'true']) }}></i>
+    <i {{ $attributes->merge(['class' => $resolvedClass() . ' ' . ($class ?? ''), 'aria-hidden' => $attributes->has('aria-label') ? 'false' : 'true']) }}></i>
 @else
     <svg
         {{ $attributes->merge(['class' => $sizeClasses() . ' ' . ($class ?? '')]) }}

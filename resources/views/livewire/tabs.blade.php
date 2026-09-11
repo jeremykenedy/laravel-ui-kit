@@ -4,7 +4,7 @@
             @foreach($tabs as $tab)
                 <button
                     type="button"
-                    wire:click="selectTab('{{ $tab }}')"
+                    wire:click="selectTab(@js($tab))"
                     role="tab"
                     aria-selected="{{ $activeTab === $tab ? 'true' : 'false' }}"
                     tabindex="{{ $activeTab === $tab ? '0' : '-1' }}"

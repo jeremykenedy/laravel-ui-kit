@@ -3,7 +3,7 @@
 <{{ $tag }}
     {{ $attributes->merge([
         'type' => $tag === 'button' ? $type : null,
-        'href' => $href,
+        'href' => ($disabled || $loading) ? null : $href,
         'disabled' => $tag === 'button' ? ($disabled || $loading) : null,
         'form' => $form,
         'class' => $baseClasses() . ' ' . $sizeClasses() . ' ' . $variantClasses(),
@@ -14,7 +14,7 @@
         'role' => ($tag === 'a' && $disabled) ? 'link' : null,
         'tabindex' => ($tag === 'a' && ($disabled || $loading)) ? '-1' : null,
     ]) }}
-    @if($confirm)
+    @if($confirm && !$disabled && !$loading)
         x-data
         x-on:click.prevent="$dispatch('open-confirm', {
             title: @js($confirmTitle ?? config('ui-kit.confirm.default_title')),

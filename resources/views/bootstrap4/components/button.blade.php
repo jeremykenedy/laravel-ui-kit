@@ -7,7 +7,7 @@
 <{{ $tag }}
     {{ $attributes->merge([
         'type' => $tag === 'button' ? $type : null,
-        'href' => $href,
+        'href' => ($disabled || $loading) ? null : $href,
         'disabled' => $tag === 'button' ? ($disabled || $loading) : null,
         'form' => $form,
         'class' => trim($btnClass . ' ' . $btnSize . ($block ? ' btn-block' : '') . ($disabled || $loading ? ' disabled' : '')),
@@ -17,7 +17,7 @@
         'aria-disabled' => ($disabled || $loading) ? 'true' : null,
         'tabindex' => ($tag === 'a' && ($disabled || $loading)) ? '-1' : null,
     ]) }}
-    @if($confirm)
+    @if($confirm && !$disabled && !$loading)
         data-toggle="modal"
         data-target="#{{ $confirmTargetId() }}"
         data-confirm-title="{{ $confirmTitle ?? config('ui-kit.confirm.default_title') }}"

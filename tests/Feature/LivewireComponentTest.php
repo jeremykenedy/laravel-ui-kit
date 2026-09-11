@@ -205,3 +205,11 @@ it('switches the password input type when the livewire action runs', function ()
         ->call('toggleVisibility')
         ->assertSee('type="text"', false);
 });
+
+it('ships the client side theme script with the livewire theme toggle', function () {
+    $scripts = json_encode(Livewire::test(UiThemeToggle::class)->effects['scripts'] ?? []);
+
+    expect($scripts)->toContain('classList.toggle(')
+        ->and($scripts)->toContain('localStorage')
+        ->and($scripts)->toContain('theme-changed');
+});

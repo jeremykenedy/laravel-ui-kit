@@ -80,10 +80,11 @@ that existed before still exists and behaves the same way.
 
 ### Known limitations
 
-- The stateful Livewire wrappers (confirm, data table, dropdown, modal, nav, pagination, search
-  input, tabs, theme toggle, toggle) render Tailwind markup under every CSS framework. Their
-  chrome depends on server driven open and selected state, which the stateless Blade component
-  cannot express. Under Bootstrap, use the Blade components with Alpine or publish and restyle.
+- The stateful Livewire wrappers (confirm, data table, dropdown, modal, nav, pagination, password
+  input, search input, tabs, theme toggle, toggle) render Tailwind markup under every CSS
+  framework. Their chrome depends on server driven open, selected or revealed state, which the
+  stateless Blade component cannot express. Under Bootstrap, use the Blade components with Alpine
+  or publish and restyle.
 
 ### Removed
 

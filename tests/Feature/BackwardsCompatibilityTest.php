@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 use Jeremykenedy\LaravelUiKit\Components\Breadcrumbs;
 use Jeremykenedy\LaravelUiKit\Components\Button;
+use Jeremykenedy\LaravelUiKit\Components\DataTable;
 use Jeremykenedy\LaravelUiKit\Components\Icon;
+use Jeremykenedy\LaravelUiKit\Components\PasswordInput;
 use Jeremykenedy\LaravelUiKit\Components\ThemeToggle;
 use Jeremykenedy\LaravelUiKit\Console\PackageInstallCommand;
 use Jeremykenedy\LaravelUiKit\Contracts\ComponentContract;
@@ -180,3 +182,69 @@ it('passes consumer attributes to the search control itself', function (string $
     $this->blade('<x-ui::search-input data-testid="user-search" />')
         ->assertSee('data-testid="user-search"', false);
 })->with(cssFrameworks());
+
+it('applies the datatable config when the attribute is not given', function () {
+    config(['ui-kit.datatable.searchable' => false, 'ui-kit.datatable.sortable' => false]);
+
+    $component = new DataTable();
+
+    expect($component->searchable)->toBeFalse()
+        ->and($component->sortable)->toBeFalse();
+});
+
+it('lets an explicit datatable attribute win over the config', function () {
+    config(['ui-kit.datatable.searchable' => false, 'ui-kit.datatable.sortable' => false]);
+
+    $component = new DataTable(searchable: true, sortable: true);
+
+    expect($component->searchable)->toBeTrue()
+        ->and($component->sortable)->toBeTrue();
+});
+
+it('keeps the datatable defaults when nothing is configured', function () {
+    $component = new DataTable();
+
+    expect($component->searchable)->toBeTrue()
+        ->and($component->sortable)->toBeTrue();
+});
+
+it('applies the password config when the attribute is not given', function () {
+    config(['ui-kit.password.strength_meter' => false, 'ui-kit.password.show_hide' => false]);
+
+    $component = new PasswordInput();
+
+    expect($component->strengthMeter)->toBeFalse()
+        ->and($component->showHide)->toBeFalse();
+});
+
+it('lets an explicit password attribute win over the config', function () {
+    config(['ui-kit.password.strength_meter' => false, 'ui-kit.password.show_hide' => false]);
+
+    $component = new PasswordInput(strengthMeter: true, showHide: true);
+
+    expect($component->strengthMeter)->toBeTrue()
+        ->and($component->showHide)->toBeTrue();
+});
+
+it('hides the strength meter in the markup when the config disables it', function (string $framework) {
+    useCssFramework($framework);
+    config(['ui-kit.password.strength_meter' => false]);
+
+    $this->blade('<x-ui::password-input name="password" />')
+        ->assertDontSee('Password strength');
+})->with(cssFrameworks());
+
+it('keeps a caller supplied toggle colour out of the alpine expression', function () {
+    useCssFramework('tailwind');
+
+    $this->blade('<x-ui::toggle name="active" on-color="not-a-colour\' + alert(1) + \'" />')
+        ->assertDontSee('alert(1)', false)
+        ->assertSee('bg-blue-600', false);
+});
+
+it('renders the requested toggle colour when it is a known one', function () {
+    useCssFramework('tailwind');
+
+    $this->blade('<x-ui::toggle name="active" on-color="green" />')
+        ->assertSee('bg-green-600', false);
+});

@@ -4,6 +4,7 @@
       type="button"
       role="switch"
       :aria-checked="modelValue ? 'true' : 'false'"
+      :aria-labelledby="label ? labelId : undefined"
       :aria-label="label ? undefined : toggleLabel"
       :disabled="disabled"
       class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed motion-reduce:transition-none dark:focus-visible:ring-offset-gray-800"
@@ -15,7 +16,7 @@
         :class="modelValue ? 'translate-x-5' : 'translate-x-0'"
       />
     </button>
-    <span v-if="label" class="ml-3 text-sm font-medium text-gray-700 dark:text-gray-300">{{ label }}</span>
+    <span v-if="label" :id="labelId" class="ml-3 text-sm font-medium text-gray-700 dark:text-gray-300">{{ label }}</span>
   </span>
 </template>
 
@@ -28,6 +29,8 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['update:modelValue'])
+
+const labelId = `ui-toggle-label-${Math.random().toString(36).slice(2, 10)}`
 
 function toggle() {
   if (!props.disabled) {

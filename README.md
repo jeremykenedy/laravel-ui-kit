@@ -213,13 +213,13 @@ a property:
 <livewire:ui-confirm />
 ```
 
-Presentational wrappers (alert, badge, card, checkbox, form group, icon, input, password input,
-select, stat card, status panel, textarea) delegate to the matching Blade component, so they
-follow the configured CSS framework. The wrappers that hold their own open or selected state
-(confirm, data table, dropdown, modal, nav, pagination, search input, tabs, theme toggle, toggle)
-render Tailwind markup regardless of the configured framework, because their chrome cannot be
-expressed by the stateless Blade component. Under Bootstrap, prefer the Blade components with
-Alpine for those, or publish the views and restyle them.
+Presentational wrappers (alert, badge, card, checkbox, form group, icon, input, select, stat
+card, status panel, textarea) delegate to the matching Blade component, so they follow the
+configured CSS framework. The wrappers that hold their own open, selected or revealed state
+(confirm, data table, dropdown, modal, nav, pagination, password input, search input, tabs, theme
+toggle, toggle) render Tailwind markup regardless of the configured framework, because that state
+cannot be driven through the stateless Blade component. Under Bootstrap, prefer the Blade
+components with Alpine for those, or publish the views and restyle them.
 
 ### Vue / React / Svelte
 

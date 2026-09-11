@@ -115,3 +115,47 @@ it('keeps blade syntax out of the framework components', function (string $direc
 
     expect($offenders)->toBe([]);
 })->with(array_keys(frontendDirectories()));
+
+it('gives every switch an accessible name when a label is supplied', function (string $directory) {
+    $extension = frontendDirectories()[$directory];
+    $contents = (string) file_get_contents(packagePath("resources/js/{$directory}/UiToggle.{$extension}"));
+
+    expect($contents)->toContain('aria-labelledby')
+        ->and($contents)->toContain('role="switch"');
+})->with(array_keys(frontendDirectories()));
+
+it('makes every switch a focusable native button', function (string $directory) {
+    $extension = frontendDirectories()[$directory];
+    $contents = (string) file_get_contents(packagePath("resources/js/{$directory}/UiToggle.{$extension}"));
+
+    expect($contents)->toContain('<button')
+        ->and($contents)->toContain('disabled');
+})->with(array_keys(frontendDirectories()));
+
+it('announces dropdown state in every frontend', function (string $directory) {
+    $extension = frontendDirectories()[$directory];
+    $contents = (string) file_get_contents(packagePath("resources/js/{$directory}/UiDropdown.{$extension}"));
+
+    expect($contents)->toContain('aria-expanded')
+        ->and($contents)->toContain('aria-haspopup')
+        ->and($contents)->toContain('role="menu"');
+})->with(array_keys(frontendDirectories()));
+
+it('closes every dropdown on an outside click', function (string $directory) {
+    $extension = frontendDirectories()[$directory];
+    $contents = (string) file_get_contents(packagePath("resources/js/{$directory}/UiDropdown.{$extension}"));
+
+    expect($contents)->toContain('mousedown');
+})->with(array_keys(frontendDirectories()));
+
+it('keeps the vue components off apis newer than the documented vue 3 baseline', function () {
+    $offenders = [];
+
+    foreach (glob(packagePath('resources/js/vue/*.vue')) ?: [] as $path) {
+        if (str_contains((string) file_get_contents($path), 'useId')) {
+            $offenders[] = basename($path);
+        }
+    }
+
+    expect($offenders)->toBe([]);
+});

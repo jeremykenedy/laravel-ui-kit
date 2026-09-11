@@ -13,8 +13,8 @@ class DataTable extends Component implements ComponentContract
     public function __construct(
         public array $headers = [],
         public ?object $rows = null,
-        public bool $searchable = true,
-        public bool $sortable = true,
+        public ?bool $searchable = null,
+        public ?bool $sortable = null,
         public bool $striped = true,
         public bool $hoverable = true,
         public bool $bordered = false,
@@ -23,6 +23,8 @@ class DataTable extends Component implements ComponentContract
         public ?string $searchPlaceholder = 'Search...',
         public ?string $id = 'data-table',
     ) {
+        $this->searchable ??= (bool) config('ui-kit.datatable.searchable', true);
+        $this->sortable ??= (bool) config('ui-kit.datatable.sortable', true);
     }
 
     public function render(): View

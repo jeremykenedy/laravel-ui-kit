@@ -15,14 +15,16 @@ class PasswordInput extends Component implements ComponentContract
         public ?string $id = null,
         public ?string $label = null,
         public ?string $placeholder = null,
-        public bool $strengthMeter = true,
-        public bool $showHide = true,
+        public ?bool $strengthMeter = null,
+        public ?bool $showHide = null,
         public bool $required = false,
         public ?string $autocomplete = 'new-password',
         public ?string $confirmName = null,
         public ?string $error = null,
     ) {
         $this->id = $this->id ?? $this->name;
+        $this->strengthMeter ??= (bool) config('ui-kit.password.strength_meter', true);
+        $this->showHide ??= (bool) config('ui-kit.password.show_hide', true);
     }
 
     public function render(): View

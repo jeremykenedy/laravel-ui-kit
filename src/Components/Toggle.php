@@ -10,6 +10,25 @@ use Jeremykenedy\LaravelUiKit\Contracts\ComponentContract;
 
 class Toggle extends Component implements ComponentContract
 {
+    /**
+     * Colours the on state may use.
+     *
+     * Tailwind only emits classes it can see in source, so the set is fixed rather than
+     * built from the attribute. That also keeps caller input out of the Alpine expression.
+     *
+     * @var array<string, string>
+     */
+    protected const ON_COLORS = [
+        'blue'   => 'bg-blue-600',
+        'green'  => 'bg-green-600',
+        'red'    => 'bg-red-600',
+        'amber'  => 'bg-amber-500',
+        'cyan'   => 'bg-cyan-600',
+        'gray'   => 'bg-gray-600',
+        'indigo' => 'bg-indigo-600',
+        'purple' => 'bg-purple-600',
+    ];
+
     public function __construct(
         public ?string $name = null,
         public ?string $id = null,
@@ -26,6 +45,22 @@ class Toggle extends Component implements ComponentContract
     public function render(): View
     {
         return view('ui::components.toggle');
+    }
+
+    /**
+     * The background class for the on state, falling back to blue for an unknown colour.
+     */
+    public function onColorClass(): string
+    {
+        return self::ON_COLORS[$this->onColor] ?? self::ON_COLORS['blue'];
+    }
+
+    /**
+     * @return list<string>
+     */
+    public static function availableOnColors(): array
+    {
+        return array_keys(self::ON_COLORS);
     }
 
     public function trackSize(): string

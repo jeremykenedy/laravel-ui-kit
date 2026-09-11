@@ -30,3 +30,47 @@
         </div>
     </div>
 </div>
+
+@script
+<script>
+    const storageKey = @js(config('ui-kit.dark_mode.storage_key', 'theme'));
+
+    const applyTheme = (mode) => {
+        const isDark = mode === 'dark'
+            || (mode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+        document.documentElement.classList.toggle('dark', isDark);
+        document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+    };
+
+    try {
+        const stored = localStorage.getItem(storageKey);
+
+        if (stored && stored !== $wire.current) {
+            $wire.set('current', stored);
+        }
+    } catch (error) {
+        // storage unavailable, fall back to the server side value
+    }
+
+    applyTheme($wire.current);
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+        if ($wire.current === 'system') {
+            applyTheme('system');
+        }
+    });
+
+    $wire.on('theme-changed', (event) => {
+        const mode = Array.isArray(event) ? event[0].mode : event.mode;
+
+        try {
+            localStorage.setItem(storageKey, mode);
+        } catch (error) {
+            // storage unavailable, the theme still applies for this page
+        }
+
+        applyTheme(mode);
+    });
+</script>
+@endscript

@@ -14,7 +14,7 @@
     />
     <span
         class="{{ $trackSize() }} relative inline-flex shrink-0 rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out peer-focus-visible:ring-2 peer-focus-visible:ring-blue-500 peer-focus-visible:ring-offset-2 motion-reduce:transition-none dark:peer-focus-visible:ring-offset-gray-800"
-        :class="enabled ? 'bg-{{ $onColor }}-600' : 'bg-gray-200 dark:bg-gray-600'"
+        :class="enabled ? @js($onColorClass()) : 'bg-gray-200 dark:bg-gray-600'"
         aria-hidden="true"
     >
         <span

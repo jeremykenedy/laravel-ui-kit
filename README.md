@@ -31,6 +31,7 @@ Laravel UI components for Blade, Livewire, Vue, React, and Svelte.
   - [Livewire Components](#livewire-components)
   - [Vue / React / Svelte](#vue--react--svelte)
 - [Features](#features)
+- [Screenshots](#screenshots)
 - [Configuration](#configuration)
 - [Changing Frameworks](#changing-frameworks)
   - [Update (Interactive)](#update-interactive)
@@ -43,6 +44,7 @@ Laravel UI components for Blade, Livewire, Vue, React, and Svelte.
 - [Translations](#translations)
 - [Accessibility](#accessibility)
 - [Publishing Assets](#publishing-assets)
+- [File Tree](#file-tree)
 - [Testing](#testing)
 - [Changelog](#changelog)
 - [License](#license)
@@ -275,6 +277,25 @@ Svelte:
 - ARIA wiring, `focus-visible` rings and reduced motion support built in
 - Interactive install, update and switch commands that also run fully from flags
 
+## Screenshots
+
+The account settings example uses the default Tailwind and Blade components. These screenshots
+come from the browser tests and show the same form in light and dark mode.
+
+| Light mode | Dark mode |
+|------------|-----------|
+| [![Account settings in light mode](art/screenshot-desktop-light.png)](art/screenshot-desktop-light.png) | [![Account settings in dark mode](art/screenshot-desktop-dark.png)](art/screenshot-desktop-dark.png) |
+
+<details>
+<summary>Mobile screenshots</summary>
+
+<p align="center">
+    <a href="art/screenshot-mobile-light.png"><img src="art/screenshot-mobile-light.png" alt="Mobile account settings in light mode" width="260"></a>
+    <a href="art/screenshot-mobile-dark.png"><img src="art/screenshot-mobile-dark.png" alt="Mobile account settings in dark mode" width="260"></a>
+</p>
+
+</details>
+
 ## Configuration
 
 ```bash
@@ -474,6 +495,49 @@ Published Blade overrides belong in `resources/views/vendor/ui-kit/{css_framewor
 Only overrides for the selected framework are loaded. Existing flat overrides under
 `resources/views/vendor/ui/components` or `resources/views/vendor/ui-kit/components` retain
 priority. Publish without `--force` to preserve your changes.
+
+## File Tree
+
+```text
+laravel-ui-kit/
+├── .github/workflows/tests.yml    # PHP, frontend, browser and lint checks
+├── art/                          # README banners and screenshots
+├── config/ui-kit.php             # Framework, icon and theme settings
+├── resources/
+│   ├── js/
+│   │   ├── react/                # React components
+│   │   ├── svelte/               # Svelte components
+│   │   └── vue/                  # Vue components
+│   ├── lang/                     # Translations
+│   └── views/
+│       ├── bootstrap4/components/
+│       ├── bootstrap5/components/
+│       ├── livewire/             # Livewire wrapper views
+│       └── tailwind/components/
+├── src/
+│   ├── Components/               # Blade component classes
+│   ├── Console/                  # Install, update and switch commands
+│   ├── Contracts/
+│   ├── Facades/
+│   ├── Livewire/                 # Livewire component classes
+│   ├── Providers/                # Package registration and view resolution
+│   └── Services/                 # Framework configuration access
+├── tests/
+│   ├── Browser/                  # Playwright tests, build and fixtures
+│   ├── Feature/                  # Rendering and command tests
+│   ├── Unit/                     # Component and service tests
+│   ├── Pest.php
+│   └── TestCase.php              # Isolated Testbench environment
+├── CHANGELOG.md
+├── LICENSE
+├── README.md
+├── composer.json
+├── package.json
+├── package-lock.json
+├── phpunit.xml
+├── pint.json
+└── playwright.config.js
+```
 
 ## Testing
 

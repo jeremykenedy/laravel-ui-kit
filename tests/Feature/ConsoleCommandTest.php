@@ -192,47 +192,18 @@ it('rejects a single invalid noninteractive install option without publishing co
         ->and(file_get_contents($this->environmentFile))->toBe($original);
 })->with([['--css', 'foundation'], ['--frontend', 'ember'], ['--css', '0'], ['--frontend', '0']]);
 
-it('does not change either setting when a switch option is invalid', function (string $command) {
+it('does not change either setting when a switch option is invalid', function (string $command, string $frontend) {
+    markInstalled($this->configFile);
     $original = file_get_contents($this->environmentFile);
 
-    $this->artisan($command, ['--css' => 'bootstrap5', '--frontend' => 'ember'])
+    $this->artisan($command, ['--css' => 'bootstrap5', '--frontend' => $frontend])
         ->assertExitCode(1);
 
     expect(file_get_contents($this->environmentFile))->toBe($original);
-})->with(['ui-kit:switch', 'ui:switch']);
+})->with(['ui-kit:switch', 'ui:switch', 'ui-kit:update'])->with(['ember', '0', '']);
 
 it('returns to css selection in the reusable package installer', function () {
-    $command = new class extends PackageInstallCommand
-    {
-        protected $signature = 'example:install';
-
-        public int $selections = 0;
-
-        protected function packageName(): string
-        {
-            return 'Example';
-        }
-
-        protected function configTag(): string
-        {
-            return 'example-config';
-        }
-
-        protected function viewsTag(): string
-        {
-            return 'example-views';
-        }
-
-        protected function promptCssFramework(): string|false
-        {
-            return ++$this->selections === 1 ? 'tailwind' : 'bootstrap4';
-        }
-
-        protected function promptFrontendFramework(): string|false
-        {
-            return $this->selections === 1 ? '__back__' : 'blade';
-        }
-    };
+    $command = new BackNavigationInstallCommand();
     $this->app->make(Kernel::class)->registerCommand($command);
 
     $this->artisan('example:install')->assertExitCode(0);
@@ -249,12 +220,12 @@ it('updates active environment assignments without changing comments or other ke
 
     expect(file_get_contents($this->environmentFile))->toBe($expected);
 })->with([
-    'comment' => ["# UI_KIT_CSS=tailwind\n", "# UI_KIT_CSS=tailwind\nUI_KIT_CSS=bootstrap5\n"],
-    'similar key' => ["OTHER_UI_KIT_CSS=tailwind\n", "OTHER_UI_KIT_CSS=tailwind\nUI_KIT_CSS=bootstrap5\n"],
-    'spaces' => ["  UI_KIT_CSS = tailwind\n", "UI_KIT_CSS=bootstrap5\n"],
-    'export' => ["export UI_KIT_CSS=tailwind\n", "UI_KIT_CSS=bootstrap5\n"],
+    'comment'               => ["# UI_KIT_CSS=tailwind\n", "# UI_KIT_CSS=tailwind\nUI_KIT_CSS=bootstrap5\n"],
+    'similar key'           => ["OTHER_UI_KIT_CSS=tailwind\n", "OTHER_UI_KIT_CSS=tailwind\nUI_KIT_CSS=bootstrap5\n"],
+    'spaces'                => ["  UI_KIT_CSS = tailwind\n", "UI_KIT_CSS=bootstrap5\n"],
+    'export'                => ["export UI_KIT_CSS=tailwind\n", "UI_KIT_CSS=bootstrap5\n"],
     'windows line endings' => ["UI_KIT_CSS=tailwind\r\nAPP_NAME=Example\r\n", "UI_KIT_CSS=bootstrap5\r\nAPP_NAME=Example\r\n"],
-    'missing newline' => ['APP_NAME=Example', "APP_NAME=Example\nUI_KIT_CSS=bootstrap5\n"],
+    'missing newline'       => ['APP_NAME=Example', "APP_NAME=Example\nUI_KIT_CSS=bootstrap5\n"],
 ]);
 
 it('preserves the other setting and published config during an update', function () {
@@ -267,3 +238,35 @@ it('preserves the other setting and published config during an update', function
         ->toBe("APP_NAME=Example\nUI_KIT_CSS=bootstrap4\nUI_KIT_FRONTEND=blade\n")
         ->and(file_get_contents($this->configFile))->toBe($originalConfig);
 });
+
+class BackNavigationInstallCommand extends PackageInstallCommand
+{
+    protected $signature = 'example:install';
+
+    public int $selections = 0;
+
+    protected function packageName(): string
+    {
+        return 'Example';
+    }
+
+    protected function configTag(): string
+    {
+        return 'example-config';
+    }
+
+    protected function viewsTag(): string
+    {
+        return 'example-views';
+    }
+
+    protected function promptCssFramework(): string|false
+    {
+        return ++$this->selections === 1 ? 'tailwind' : 'bootstrap4';
+    }
+
+    protected function promptFrontendFramework(): string|false
+    {
+        return $this->selections === 1 ? '__back__' : 'blade';
+    }
+}

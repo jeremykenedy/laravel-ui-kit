@@ -22,19 +22,19 @@ class SwitchCommand extends Command
         $css = $this->option('css');
         $frontend = $this->option('frontend');
 
-        if (!$css && !$frontend) {
+        if ($css === null && $frontend === null) {
             $this->error('Provide --css and/or --frontend');
 
             return self::FAILURE;
         }
 
-        if ($css && !in_array($css, ['tailwind', 'bootstrap5', 'bootstrap4'])) {
+        if ($css !== null && !in_array($css, ['tailwind', 'bootstrap5', 'bootstrap4'])) {
             $this->error("Invalid CSS: {$css}");
 
             return self::FAILURE;
         }
 
-        if ($frontend && !in_array($frontend, ['blade', 'livewire', 'vue', 'react', 'svelte'])) {
+        if ($frontend !== null && !in_array($frontend, ['blade', 'livewire', 'vue', 'react', 'svelte'])) {
             $this->error("Invalid frontend: {$frontend}");
 
             return self::FAILURE;

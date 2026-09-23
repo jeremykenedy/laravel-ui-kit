@@ -176,13 +176,15 @@ class UiKitServiceProvider extends ServiceProvider
         $cssFramework = $this->activeCssFramework();
         $viewsPath = $this->packagePath('resources/views');
 
-        // The "ui" namespace backs the Blade component render() methods, for example
-        // view('ui::components.button'). The active CSS framework wins; Tailwind is the
-        // safety net so a framework missing a single template still renders.
-        $componentPaths = array_values(array_unique([
-            $viewsPath.'/'.$cssFramework,
-            $viewsPath.'/'.self::FALLBACK_CSS_FRAMEWORK,
-        ]));
+        $componentPaths = [];
+
+        foreach (array_unique([$cssFramework, self::FALLBACK_CSS_FRAMEWORK]) as $framework) {
+            foreach ($this->app['config']->get('view.paths', []) as $viewPath) {
+                $componentPaths[] = $viewPath.'/vendor/ui-kit/'.$framework;
+            }
+
+            $componentPaths[] = $viewsPath.'/'.$framework;
+        }
 
         $this->loadViewsFrom($componentPaths, 'ui');
 

@@ -33,7 +33,7 @@ class InstallCommand extends Command
             $this->line('  To switch a single setting quickly:');
             $this->line('    <comment>php artisan ui-kit:switch --css=bootstrap5</comment>');
             $this->newLine();
-            $this->warn('  Reinstalling will overwrite your config and published views.');
+            $this->warn('  Reinstalling will overwrite your published config.');
             $this->warn('  This is a destructive action that resets all package settings.');
             $this->newLine();
 

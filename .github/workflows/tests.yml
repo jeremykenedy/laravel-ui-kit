@@ -23,26 +23,38 @@ jobs:
           - php: '8.2'
             laravel: '12.*'
             testbench: '10.*'
+            livewire: '4.*'
           - php: '8.3'
             laravel: '12.*'
             testbench: '10.*'
+            livewire: '4.*'
           - php: '8.4'
             laravel: '12.*'
             testbench: '10.*'
+            livewire: '4.*'
           - php: '8.5'
             laravel: '12.*'
             testbench: '10.*'
+            livewire: '4.*'
           - php: '8.3'
             laravel: '13.*'
             testbench: '11.*'
+            livewire: '4.*'
           - php: '8.4'
             laravel: '13.*'
             testbench: '11.*'
+            livewire: '4.*'
           - php: '8.5'
             laravel: '13.*'
             testbench: '11.*'
+            livewire: '4.*'
 
-    name: PHP ${{ matrix.php }} / Laravel ${{ matrix.laravel }}
+          - php: '8.2'
+            laravel: '12.*'
+            testbench: '10.*'
+            livewire: '3.*'
+
+    name: PHP ${{ matrix.php }} / Laravel ${{ matrix.laravel }} / Livewire ${{ matrix.livewire }}
 
     steps:
       - name: Checkout
@@ -65,7 +77,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update --dev
+          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "livewire/livewire:${{ matrix.livewire }}" --no-interaction --no-update --dev
           composer update --prefer-dist --no-interaction
 
       - name: Tests
@@ -169,3 +181,59 @@ jobs:
           for dir in resources/lang/*/; do
             test -f "${dir}ui-kit.php" || (echo "Missing translations in ${dir}" && exit 1)
           done
+
+  browser:
+    runs-on: ubuntu-latest
+    name: Browser / Svelte ${{ matrix.svelte }}
+    strategy:
+      fail-fast: false
+      matrix:
+        svelte: ['4', '5']
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, pdo_sqlite
+          tools: composer:v2
+          coverage: none
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: |
+          composer install --prefer-dist --no-interaction
+          npm ci
+
+      - name: Check frontend development dependencies
+        if: matrix.svelte == '5'
+        run: npm audit
+
+      - name: Install legacy Svelte for compatibility testing
+        if: matrix.svelte == '4'
+        run: npm install --no-save --package-lock=false svelte@4.2.20
+
+      - name: Compile every frontend and render browser fixtures
+        run: npm run build
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Test desktop and mobile interactions
+        run: npm run test:browser
+
+      - name: Upload browser failure reports
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-results-svelte-${{ matrix.svelte }}
+          path: test-results
+          retention-days: 7

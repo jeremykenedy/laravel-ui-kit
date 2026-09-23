@@ -18,11 +18,7 @@ trait HandlesFrameworkSetup
 
     protected function updateEnvValue(string $key, string $value): void
     {
-        if (app()->runningUnitTests()) {
-            return;
-        }
-
-        $path = base_path('.env');
+        $path = $this->laravel->environmentFilePath();
 
         if (!file_exists($path)) {
             return;
@@ -30,13 +26,15 @@ trait HandlesFrameworkSetup
 
         $content = file_get_contents($path);
 
-        if (str_contains($content, "{$key}=")) {
-            $content = preg_replace("/^{$key}=.*/m", "{$key}={$value}", $content);
-        } else {
-            $content .= "\n{$key}={$value}";
+        $pattern = '/^[\t ]*(?:export[\t ]+)?'.preg_quote($key, '/').'[\t ]*=[^\r\n]*/m';
+        $content = preg_replace_callback($pattern, fn (): string => "{$key}={$value}", $content, -1, $count);
+
+        if ($count === 0) {
+            $newline = str_contains($content, "\r\n") ? "\r\n" : "\n";
+            $content .= ($content !== '' && !str_ends_with($content, "\n") ? $newline : '')."{$key}={$value}".$newline;
         }
 
-        file_put_contents($path, $content);
+        file_put_contents($path, $content, LOCK_EX);
     }
 
     protected function setCssFramework(string $css): void

@@ -28,22 +28,24 @@ class SwitchFrameworkCommand extends Command
             return self::FAILURE;
         }
 
-        if ($css) {
-            if (!in_array($css, ['tailwind', 'bootstrap5', 'bootstrap4'])) {
-                $this->error("Invalid CSS framework: {$css}. Use tailwind, bootstrap5, or bootstrap4.");
+        if ($css !== null && !in_array($css, ['tailwind', 'bootstrap5', 'bootstrap4'], true)) {
+            $this->error("Invalid CSS framework: {$css}. Use tailwind, bootstrap5, or bootstrap4.");
 
-                return self::FAILURE;
-            }
+            return self::FAILURE;
+        }
+
+        if ($frontend !== null && !in_array($frontend, ['blade', 'livewire', 'vue', 'react', 'svelte'], true)) {
+            $this->error("Invalid frontend: {$frontend}. Use blade, livewire, vue, react, or svelte.");
+
+            return self::FAILURE;
+        }
+
+        if ($css) {
             $this->setCssFramework($css);
             $this->info("CSS framework switched to: {$css}");
         }
 
         if ($frontend) {
-            if (!in_array($frontend, ['blade', 'livewire', 'vue', 'react', 'svelte'])) {
-                $this->error("Invalid frontend: {$frontend}. Use blade, livewire, vue, react, or svelte.");
-
-                return self::FAILURE;
-            }
             $this->setFrontendFramework($frontend);
             $this->info("Frontend framework switched to: {$frontend}");
         }

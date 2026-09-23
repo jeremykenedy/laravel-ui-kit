@@ -37,7 +37,7 @@ class UpdateCommand extends Command
         $css = $this->option('css');
         $frontend = $this->option('frontend');
 
-        if (!$css && !$frontend) {
+        if ($css === null && $frontend === null) {
             $result = $this->promptFrameworks();
             if ($result === false) {
                 return self::FAILURE;
@@ -48,13 +48,13 @@ class UpdateCommand extends Command
             $validCss = ['tailwind', 'bootstrap5', 'bootstrap4'];
             $validFrontend = ['blade', 'livewire', 'vue', 'react', 'svelte'];
 
-            if ($css && !in_array($css, $validCss)) {
+            if ($css !== null && !in_array($css, $validCss)) {
                 $this->error("Invalid CSS framework: {$css}. Valid: ".implode(', ', $validCss));
 
                 return self::FAILURE;
             }
 
-            if ($frontend && !in_array($frontend, $validFrontend)) {
+            if ($frontend !== null && !in_array($frontend, $validFrontend)) {
                 $this->error("Invalid frontend: {$frontend}. Valid: ".implode(', ', $validFrontend));
 
                 return self::FAILURE;

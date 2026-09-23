@@ -4,7 +4,7 @@ defineEmits(['update:checked'])
 </script>
 <template>
   <div class="flex items-start">
-    <input type="checkbox" :id="name" :checked="checked" @change="$emit('update:checked', $event.target.checked)" :disabled="disabled" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 mt-0.5" />
-    <div v-if="label" class="ml-3 text-sm"><label :for="name" class="font-medium text-gray-700 dark:text-gray-300">{{ label }}</label><p v-if="description" class="text-gray-500">{{ description }}</p></div>
+    <input type="checkbox" :id="name" :name="name" :checked="checked" @change="$emit('update:checked', $event.target.checked)" :disabled="disabled" class="h-4 w-4 rounded border-gray-300 dark:border-gray-600 text-blue-600 dark:text-blue-400 focus:ring-blue-500 dark:focus:ring-blue-400 mt-0.5" />
+    <div v-if="label" class="ml-3 text-sm"><label :for="name" class="font-medium text-gray-700 dark:text-gray-300">{{ label }}</label><p v-if="description" class="text-gray-500 dark:text-gray-400">{{ description }}</p></div>
   </div>
 </template>

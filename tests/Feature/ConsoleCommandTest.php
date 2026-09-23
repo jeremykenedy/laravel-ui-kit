@@ -224,7 +224,7 @@ it('updates active environment assignments without changing comments or other ke
     'similar key'           => ["OTHER_UI_KIT_CSS=tailwind\n", "OTHER_UI_KIT_CSS=tailwind\nUI_KIT_CSS=bootstrap5\n"],
     'spaces'                => ["  UI_KIT_CSS = tailwind\n", "UI_KIT_CSS=bootstrap5\n"],
     'export'                => ["export UI_KIT_CSS=tailwind\n", "UI_KIT_CSS=bootstrap5\n"],
-    'windows line endings' => ["UI_KIT_CSS=tailwind\r\nAPP_NAME=Example\r\n", "UI_KIT_CSS=bootstrap5\r\nAPP_NAME=Example\r\n"],
+    'windows line endings'  => ["UI_KIT_CSS=tailwind\r\nAPP_NAME=Example\r\n", "UI_KIT_CSS=bootstrap5\r\nAPP_NAME=Example\r\n"],
     'missing newline'       => ['APP_NAME=Example', "APP_NAME=Example\nUI_KIT_CSS=bootstrap5\n"],
 ]);
 

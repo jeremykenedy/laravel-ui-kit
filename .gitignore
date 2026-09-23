@@ -9,5 +9,8 @@ Thumbs.db
 *.swp
 *.swo
 composer.lock
-package-lock.json
 .env
+
+/tests/Browser/dist
+/test-results
+/playwright-report

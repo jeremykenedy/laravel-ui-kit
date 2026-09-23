@@ -1,0 +1,7 @@
+[x-cloak] { display: none !important; }
+body { margin: 0; font-family: system-ui, sans-serif; }
+main { max-width: 800px; margin: 32px auto; padding: 24px; }
+form > div, main > section { margin-bottom: 24px; }
+h1 { margin-bottom: 24px; font-size: 28px; }
+.fixture-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0; }
+picture img { max-width: 100%; height: auto; }

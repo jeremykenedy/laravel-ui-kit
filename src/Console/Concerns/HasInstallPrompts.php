@@ -84,22 +84,22 @@ trait HasInstallPrompts
         $css = $this->option('css');
         $frontend = $this->option('frontend');
 
-        if ($css && $frontend) {
-            $validCss = ['tailwind', 'bootstrap5', 'bootstrap4'];
-            $validFrontend = ['blade', 'livewire', 'vue', 'react', 'svelte'];
+        $validCss = ['tailwind', 'bootstrap5', 'bootstrap4'];
+        $validFrontend = ['blade', 'livewire', 'vue', 'react', 'svelte'];
 
-            if (!in_array($css, $validCss)) {
-                $this->error("Invalid CSS framework: {$css}. Use: ".implode(', ', $validCss));
+        if ($css !== null && !in_array($css, $validCss, true)) {
+            $this->error("Invalid CSS framework: {$css}. Use: ".implode(', ', $validCss));
 
-                return false;
-            }
+            return false;
+        }
 
-            if (!in_array($frontend, $validFrontend)) {
-                $this->error("Invalid frontend: {$frontend}. Use: ".implode(', ', $validFrontend));
+        if ($frontend !== null && !in_array($frontend, $validFrontend, true)) {
+            $this->error("Invalid frontend: {$frontend}. Use: ".implode(', ', $validFrontend));
 
-                return false;
-            }
+            return false;
+        }
 
+        if ($css !== null && $frontend !== null) {
             return ['css' => $css, 'frontend' => $frontend];
         }
 
@@ -145,7 +145,7 @@ trait HasInstallPrompts
         $valid = ['tailwind', 'bootstrap5', 'bootstrap4'];
         $css = $this->option('css');
 
-        if ($css) {
+        if ($css !== null) {
             if (!in_array($css, $valid)) {
                 $this->error("Invalid CSS framework: {$css}. Use: ".implode(', ', $valid));
 
@@ -175,7 +175,7 @@ trait HasInstallPrompts
         $valid = ['blade', 'livewire', 'vue', 'react', 'svelte'];
         $frontend = $this->option('frontend');
 
-        if ($frontend) {
+        if ($frontend !== null) {
             if (!in_array($frontend, $valid)) {
                 $this->error("Invalid frontend: {$frontend}. Use: ".implode(', ', $valid));
 

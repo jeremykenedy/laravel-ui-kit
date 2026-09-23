@@ -35,15 +35,17 @@ abstract class PackageInstallCommand extends Command
     {
         $this->renderBanner($this->bannerText());
 
-        $css = $this->promptCssFramework();
-        if ($css === false) {
-            return self::FAILURE;
-        }
+        do {
+            $css = $this->promptCssFramework();
+            if ($css === false) {
+                return self::FAILURE;
+            }
 
-        $frontend = $this->promptFrontendFramework();
-        if ($frontend === false) {
-            return self::FAILURE;
-        }
+            $frontend = $this->promptFrontendFramework();
+            if ($frontend === false) {
+                return self::FAILURE;
+            }
+        } while ($frontend === '__back__');
 
         $this->call('vendor:publish', ['--tag' => $this->configTag(), '--force' => false]);
         $this->call('vendor:publish', ['--tag' => $this->viewsTag(), '--force' => true]);

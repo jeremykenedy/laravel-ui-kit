@@ -1,5 +1,30 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+
+- Published Blade templates now resolve from the selected framework directory while keeping
+  existing flat view overrides first.
+- Noninteractive installs validate individual options, and the shared switch command validates
+  both options before changing settings.
+- Framework commands update Laravel's selected environment file and handle commented settings,
+  spaces, exported assignments, and Windows line endings.
+- The reusable package installer returns to CSS selection when Back is selected.
+- Vue, React, and Svelte checkbox, select, textarea, and password controls submit their names.
+- Disabled frontend links no longer navigate, and Svelte loading buttons are disabled.
+- Svelte input and password components compile with dynamic input types.
+
+### Changed
+
+- Added dark colors to the affected frontend form controls and buttons.
+- Updated the light and dark banners and documented actual framework coverage, asset setup,
+  published view precedence, and safe update behavior.
+- Added frontend compilation and desktop and mobile browser tests to CI, with Svelte 4 and 5
+  compatibility runs and explicit Livewire 3 coverage.
+
+Existing framework defaults, PHP dependencies, and component names are unchanged.
+
 All notable changes to `jeremykenedy/laravel-ui-kit` are documented here.
 
 ## v2.0.1 - 2026-09-11

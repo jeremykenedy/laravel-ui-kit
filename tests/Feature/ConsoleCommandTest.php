@@ -2,18 +2,27 @@
 
 declare(strict_types=1);
 use Illuminate\Contracts\Console\Kernel;
+use Illuminate\Support\Facades\File;
+use Jeremykenedy\LaravelUiKit\Console\PackageInstallCommand;
 
 /**
  * The install and update commands both branch on whether config/ui-kit.php exists,
  * so each test starts from a known state and puts the file back the way it found it.
  */
 beforeEach(function () {
+    $this->environmentDirectory = sys_get_temp_dir().'/ui-kit-env-'.bin2hex(random_bytes(8));
+    mkdir($this->environmentDirectory, 0755, true);
+    $this->app->useEnvironmentPath($this->environmentDirectory);
+    $this->app->loadEnvironmentFrom('.env.testing');
+    $this->environmentFile = $this->app->environmentFilePath();
+    file_put_contents($this->environmentFile, "APP_NAME=Example\nUI_KIT_CSS=tailwind\nUI_KIT_FRONTEND=blade\n");
     $this->configFile = config_path('ui-kit.php');
     $this->configExisted = file_exists($this->configFile);
     $this->originalConfig = $this->configExisted ? file_get_contents($this->configFile) : null;
 });
 
 afterEach(function () {
+    File::deleteDirectory($this->environmentDirectory);
     if ($this->configExisted) {
         file_put_contents($this->configFile, $this->originalConfig);
 
@@ -143,6 +152,9 @@ it('falls back to the configured values when run without options and without int
 
     $this->artisan('ui-kit:install', ['--no-interaction' => true])
         ->assertExitCode(0);
+
+    expect(file_get_contents($this->environmentFile))
+        ->toBe("APP_NAME=Example\nUI_KIT_CSS=bootstrap4\nUI_KIT_FRONTEND=react\n");
 });
 
 it('registers all four artisan commands', function () {
@@ -152,4 +164,106 @@ it('registers all four artisan commands', function () {
         ->and($commands)->toContain('ui-kit:update')
         ->and($commands)->toContain('ui-kit:switch')
         ->and($commands)->toContain('ui:switch');
+});
+
+it('persists selections in the configured environment file', function (string $command, string $css, string $frontend) {
+    markInstalled($this->configFile);
+    $options = ['--css' => $css, '--frontend' => $frontend];
+
+    if ($command === 'ui-kit:install') {
+        $options['--force'] = true;
+    }
+
+    $this->artisan($command, $options)->assertExitCode(0);
+
+    expect(file_get_contents($this->environmentFile))
+        ->toBe("APP_NAME=Example\nUI_KIT_CSS={$css}\nUI_KIT_FRONTEND={$frontend}\n");
+})->with(['ui-kit:install', 'ui-kit:update', 'ui-kit:switch', 'ui:switch'])
+    ->with(cssFrameworks())->with(frontends());
+
+it('rejects a single invalid noninteractive install option without publishing config', function (string $option, string $value) {
+    markNotInstalled($this->configFile);
+    $original = file_get_contents($this->environmentFile);
+
+    $this->artisan('ui-kit:install', [$option => $value, '--no-interaction' => true])
+        ->assertExitCode(1);
+
+    expect(file_exists($this->configFile))->toBeFalse()
+        ->and(file_get_contents($this->environmentFile))->toBe($original);
+})->with([['--css', 'foundation'], ['--frontend', 'ember'], ['--css', '0'], ['--frontend', '0']]);
+
+it('does not change either setting when a switch option is invalid', function (string $command) {
+    $original = file_get_contents($this->environmentFile);
+
+    $this->artisan($command, ['--css' => 'bootstrap5', '--frontend' => 'ember'])
+        ->assertExitCode(1);
+
+    expect(file_get_contents($this->environmentFile))->toBe($original);
+})->with(['ui-kit:switch', 'ui:switch']);
+
+it('returns to css selection in the reusable package installer', function () {
+    $command = new class extends PackageInstallCommand
+    {
+        protected $signature = 'example:install';
+
+        public int $selections = 0;
+
+        protected function packageName(): string
+        {
+            return 'Example';
+        }
+
+        protected function configTag(): string
+        {
+            return 'example-config';
+        }
+
+        protected function viewsTag(): string
+        {
+            return 'example-views';
+        }
+
+        protected function promptCssFramework(): string|false
+        {
+            return ++$this->selections === 1 ? 'tailwind' : 'bootstrap4';
+        }
+
+        protected function promptFrontendFramework(): string|false
+        {
+            return $this->selections === 1 ? '__back__' : 'blade';
+        }
+    };
+    $this->app->make(Kernel::class)->registerCommand($command);
+
+    $this->artisan('example:install')->assertExitCode(0);
+
+    expect($command->selections)->toBe(2)
+        ->and(file_get_contents($this->environmentFile))
+        ->toBe("APP_NAME=Example\nUI_KIT_CSS=bootstrap4\nUI_KIT_FRONTEND=blade\n");
+});
+
+it('updates active environment assignments without changing comments or other keys', function (string $original, string $expected) {
+    file_put_contents($this->environmentFile, $original);
+
+    $this->artisan('ui-kit:switch', ['--css' => 'bootstrap5'])->assertExitCode(0);
+
+    expect(file_get_contents($this->environmentFile))->toBe($expected);
+})->with([
+    'comment' => ["# UI_KIT_CSS=tailwind\n", "# UI_KIT_CSS=tailwind\nUI_KIT_CSS=bootstrap5\n"],
+    'similar key' => ["OTHER_UI_KIT_CSS=tailwind\n", "OTHER_UI_KIT_CSS=tailwind\nUI_KIT_CSS=bootstrap5\n"],
+    'spaces' => ["  UI_KIT_CSS = tailwind\n", "UI_KIT_CSS=bootstrap5\n"],
+    'export' => ["export UI_KIT_CSS=tailwind\n", "UI_KIT_CSS=bootstrap5\n"],
+    'windows line endings' => ["UI_KIT_CSS=tailwind\r\nAPP_NAME=Example\r\n", "UI_KIT_CSS=bootstrap5\r\nAPP_NAME=Example\r\n"],
+    'missing newline' => ['APP_NAME=Example', "APP_NAME=Example\nUI_KIT_CSS=bootstrap5\n"],
+]);
+
+it('preserves the other setting and published config during an update', function () {
+    markInstalled($this->configFile);
+    $originalConfig = file_get_contents($this->configFile);
+
+    $this->artisan('ui-kit:update', ['--css' => 'bootstrap4'])->assertExitCode(0);
+
+    expect(file_get_contents($this->environmentFile))
+        ->toBe("APP_NAME=Example\nUI_KIT_CSS=bootstrap4\nUI_KIT_FRONTEND=blade\n")
+        ->and(file_get_contents($this->configFile))->toBe($originalConfig);
 });

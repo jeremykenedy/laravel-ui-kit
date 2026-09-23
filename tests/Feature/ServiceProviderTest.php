@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\View;
 use Jeremykenedy\LaravelUiKit\Providers\UiKitServiceProvider;
@@ -95,3 +96,44 @@ it('reads component views from the active css framework', function (string $fram
 
     expect($resolved)->toContain("/resources/views/{$framework}/components/button.blade.php");
 })->with(cssFrameworks());
+
+it('renders published framework overrides through both view namespaces', function (string $framework) {
+    $directory = sys_get_temp_dir().'/ui-kit-views-'.bin2hex(random_bytes(8));
+    $path = $directory.'/vendor/ui-kit/'.$framework.'/components';
+    File::ensureDirectoryExists($path);
+    file_put_contents($path.'/button.blade.php', '<button>Published button</button>');
+    config(['view.paths' => [$directory], 'ui-kit.css_framework' => $framework]);
+    View::replaceNamespace('ui', []);
+    View::replaceNamespace('ui-kit', []);
+    View::getFinder()->flush();
+
+    try {
+        (new UiKitServiceProvider($this->app))->boot();
+
+        $this->blade('<x-ui::button />')->assertSee('Published button');
+        expect(view('ui-kit::components.button')->render())->toContain('Published button');
+        expect(View::getFinder()->find('ui::components.card'))
+            ->toBe(packagePath("resources/views/{$framework}/components/card.blade.php"));
+    } finally {
+        File::deleteDirectory($directory);
+    }
+})->with(cssFrameworks());
+
+it('keeps existing flat view overrides ahead of framework overrides', function (string $namespace) {
+    $directory = sys_get_temp_dir().'/ui-kit-views-'.bin2hex(random_bytes(8));
+    File::ensureDirectoryExists($directory.'/vendor/'.$namespace.'/components');
+    File::ensureDirectoryExists($directory.'/vendor/ui-kit/tailwind/components');
+    file_put_contents($directory.'/vendor/'.$namespace.'/components/button.blade.php', 'Existing override');
+    file_put_contents($directory.'/vendor/ui-kit/tailwind/components/button.blade.php', 'Framework override');
+    config(['view.paths' => [$directory]]);
+    View::replaceNamespace($namespace, []);
+    View::getFinder()->flush();
+
+    try {
+        (new UiKitServiceProvider($this->app))->boot();
+
+        expect(view($namespace.'::components.button')->render())->toBe('Existing override');
+    } finally {
+        File::deleteDirectory($directory);
+    }
+})->with(['ui', 'ui-kit']);
